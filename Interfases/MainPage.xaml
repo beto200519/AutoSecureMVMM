@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interfases.MainPage">
+
+
+    <VerticalStackLayout Padding="15" BackgroundColor="#333333" Opacity="0.9">
+
+        <Label Text="HISTORIAL"
+                FontSize="24"
+                Padding="0,15,0,20"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"/>
+
+        <Frame BackgroundColor="LightGray"
+               CornerRadius="15"
+               Padding="20"
+               HasShadow="True"
+               BorderColor="Black"
+               HeightRequest="600">
+
+            <Grid 
+                    RowDefinitions="Auto, Auto, Auto , Auto , Auto"
+                    ColumnDefinitions="*, *, * , * "
+                    ColumnSpacing="10"
+                    RowSpacing="10">
+
+                <Label Text="Acción" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label Text="Fecha" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="Hora" FontAttributes="Bold" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
+                <Label Text="Lugar" FontAttributes="Bold" Grid.Row="0" Grid.Column="3" HorizontalOptions="Center"/>
+
+                <Label Text="Entre" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label Text="01/02/25" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="7:30 a.m" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
+                <Label Text="Cisco" Grid.Row="1" Grid.Column="3" HorizontalOptions="Center"/>
+
+                <Label Text="Salí" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label Text="01/02/25" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="8:20 a.m" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center"/>
+                <Label Text="Cisco" Grid.Row="2" Grid.Column="3" HorizontalOptions="Center"/>
+
+                <Label Text="Entre" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label Text="02/02/25" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="2:10 p.m" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center"/>
+                <Label Text="Aula activa" Grid.Row="3" Grid.Column="3" HorizontalOptions="Center"/>
+
+                <Label Text="Salí" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label Text="02/02/25" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="3:00 p.m" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center"/>
+                <Label Text="Aula activa" Grid.Row="4" Grid.Column="3" HorizontalOptions="Center"/>
+
+            </Grid>
+        </Frame>
+    </VerticalStackLayout>
+
+</ContentPage>

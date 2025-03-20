@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Interfases.VistaModel"
+             xmlns:local="clr-namespace:Interfases.Vistas"
+             x:Class="Interfases.Vistas.Perfil"
+           BackgroundColor="black">
+
+    <ContentPage.BindingContext>
+        <vm:PerfilMV />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+   
+
+        <Style x:Key="PageTitle" TargetType="Label">
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#daa520" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+        </Style>
+
+        <Style x:Key="SectionTitle" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#daa520" />
+            <Setter Property="Margin" Value="0,10,0,5" />
+        </Style>
+
+        <Style x:Key="FormLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="Margin" Value="0,10,0,5" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="FormValue" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="#cccccc" />
+            <Setter Property="Margin" Value="0,10,0,5" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="GoldenButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#daa520" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="Margin" Value="0,5,0,0" />
+        </Style>
+
+        <Style x:Key="DangerButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#800000" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="Margin" Value="0,5,0,0" />
+        </Style>
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="#1A1A1A" />
+            <Setter Property="Stroke" Value="#333333" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Margin" Value="0,10,0,10" />
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Brush="#daa520" Offset="4,4" Opacity="0.3" Radius="8" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header con sombra dorada -->
+        <Border Grid.Row="0" BackgroundColor="#121212" Padding="15" StrokeThickness="0">
+            <Border.Shadow>
+                <Shadow Brush="#daa520" Offset="0,3" Opacity="0.4" Radius="5" />
+            </Border.Shadow>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Text="Gestión de Perfiles" Style="{StaticResource PageTitle}" />
+
+                <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                    <Label Text="{Binding PerfilActual.TipoPerfil}" 
+                           TextColor="#daa520" 
+                           FontAttributes="Bold" 
+                           VerticalOptions="Center" 
+                           Margin="0,0,10,0" />
+                    <Border WidthRequest="40" 
+                            HeightRequest="40" 
+                            StrokeShape="RoundRectangle 20" 
+                            Padding="0" 
+                            BackgroundColor="#292929"
+                            Stroke="#daa520" 
+                            StrokeThickness="1" 
+                            Margin="0,0,10,0">
+                        <Image Source="{Binding PerfilActual.Foto}" Aspect="AspectFill" />
+                    </Border>
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- Contenido Principal -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20" Spacing="15">
+                <!-- Mensaje de Acción -->
+                <Label Text="{Binding MensajeAccion}" 
+                       TextColor="#daa520" 
+                       FontSize="16" 
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding MensajeAccion, Converter={StaticResource StringNotEmptyConverter}}" />
+
+                <!-- Búsqueda y Filtros -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackLayout>
+                        <Label Text="BÚSQUEDA Y FILTROS" Style="{StaticResource SectionTitle}" />
+                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
+
+                        <Grid ColumnSpacing="10" RowSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Entry Grid.Column="0" 
+                                   Placeholder="Buscar perfiles por nombre" 
+                                   Text="{Binding BusquedaTexto}" 
+                                   TextColor="White" 
+                                   BackgroundColor="#292929"
+                                   PlaceholderColor="#666666" />
+
+                            <Button Grid.Column="1" 
+                                    Text="Buscar" 
+                                    Command="{Binding BuscarCommand}" 
+                                    Style="{StaticResource GoldenButton}" />
+                        </Grid>
+
+                        <HorizontalStackLayout Spacing="10" Margin="0,10,0,0" HorizontalOptions="Center">
+                            <Button Text="Todos" 
+                                    Command="{Binding FiltrarPerfilesCommand}" 
+                                    CommandParameter="Todos"
+                                    Style="{StaticResource GoldenButton}" />
+                            <Button Text="Administrador" 
+                                    Command="{Binding FiltrarPerfilesCommand}" 
+                                    CommandParameter="Administrador"
+                                    Style="{StaticResource GoldenButton}" />
+                            <Button Text="Usuario" 
+                                    Command="{Binding FiltrarPerfilesCommand}" 
+                                    CommandParameter="Usuario"
+                                    Style="{StaticResource GoldenButton}" />
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Border>
+
+                <!-- Lista de Perfiles -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackLayout>
+                        <Label Text="LISTA DE PERFILES" Style="{StaticResource SectionTitle}" />
+                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
+
+                        <CollectionView ItemsSource="{Binding PerfilesFiltrados}"
+                                        SelectionMode="Single"
+                                        EmptyView="No se encontraron perfiles que coincidan con la búsqueda">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource CardStyle}" Margin="0,5">
+                                        <Grid ColumnSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Foto del Perfil -->
+                                            <Border Grid.Column="0" 
+                                                    WidthRequest="50" 
+                                                    HeightRequest="50" 
+                                                    StrokeShape="RoundRectangle 25" 
+                                                    BackgroundColor="#292929"
+                                                    Stroke="#daa520" 
+                                                    StrokeThickness="1">
+                                                <Image Source="{Binding Foto}" Aspect="AspectFill" />
+                                            </Border>
+
+                                            <!-- Información del Perfil -->
+                                            <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="{Binding Nombre, StringFormat='{0} {1}'}" 
+                                                       TextColor="White" 
+                                                       FontAttributes="Bold" />
+                                                <Label Text="{Binding Apellido}" 
+                                                       TextColor="White" 
+                                                       FontAttributes="Bold" />
+                                                <Label Text="{Binding TipoPerfil}" 
+                                                       TextColor="#cccccc" 
+                                                       FontSize="12" />
+                                                <HorizontalStackLayout>
+                                                    <Label Text="Estado: " 
+                                                           TextColor="#cccccc" 
+                                                           FontSize="12" />
+                                                    <Label Text="{Binding EstadoActivo, Converter={StaticResource BoolToEstadoConverter}}" 
+                                                           TextColor="{Binding EstadoActivo, Converter={StaticResource BoolToColorConverter}}" 
+                                                           FontSize="12" />
+                                                </HorizontalStackLayout>
+                                            </StackLayout>
+
+                                            <!-- Botón de Editar -->
+                                            <Button Grid.Column="2" 
+                                                    Text="Editar" 
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PerfilMV}}, Path=EditarPerfilCommand}" 
+                                                    CommandParameter="{Binding .}"
+                                                    Style="{StaticResource GoldenButton}" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Border>
+
+                <!-- Formulario de Perfil -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackLayout>
+                        <Label Text="DATOS DEL PERFIL" Style="{StaticResource SectionTitle}" />
+                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
+
+                        <Grid ColumnSpacing="10" RowSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="ID:" Style="{StaticResource FormLabel}" />
+                            <Entry Grid.Row="0" Grid.Column="1" 
+                                   Text="{Binding PerfilActual.IdPerfil}" 
+                                   IsEnabled="False"
+                                   TextColor="White" 
+                                   BackgroundColor="#292929" />
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Nombre:" Style="{StaticResource FormLabel}" />
+                            <Entry Grid.Row="1" Grid.Column="1" 
+                                   Text="{Binding PerfilActual.Nombre}" 
+                                   TextColor="White" 
+                                   BackgroundColor="#292929" />
+
+                            <Label Grid.Row="2" Grid.Column="0" Text="Apellido:" Style="{StaticResource FormLabel}" />
+                            <Entry Grid.Row="2" Grid.Column="1" 
+                                   Text="{Binding PerfilActual.Apellido}" 
+                                   TextColor="White" 
+                                   BackgroundColor="#292929" />
+
+                            <Label Grid.Row="3" Grid.Column="0" Text="Tipo de Perfil:" Style="{StaticResource FormLabel}" />
+                            <Picker Grid.Row="3" Grid.Column="1" 
+                                    SelectedItem="{Binding PerfilActual.TipoPerfil}"
+                                    TextColor="White" 
+                                    BackgroundColor="#292929"
+                                    TitleColor="#cccccc">
+                                <Picker.Items>
+                                    <x:String>Administrador</x:String>
+                                    <x:String>Usuario</x:String>
+                                </Picker.Items>
+                            </Picker>
+
+                            <Label Grid.Row="4" Grid.Column="0" Text="Foto:" Style="{StaticResource FormLabel}" />
+                            <Entry Grid.Row="4" Grid.Column="1" 
+                                   Text="{Binding PerfilActual.Foto}" 
+                                   TextColor="White" 
+                                   BackgroundColor="#292929" />
+
+                            <Label Grid.Row="5" Grid.Column="0" Text="Estado Activo:" Style="{StaticResource FormLabel}" />
+                            <Switch Grid.Row="5" Grid.Column="1" 
+                                    IsToggled="{Binding PerfilActual.EstadoActivo}"
+                                    OnColor="#daa520"
+                                    ThumbColor="White"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center" />
+                        </Grid>
+
+                        <HorizontalStackLayout Spacing="10" Margin="0,20,0,0" HorizontalOptions="Center">
+                            <Button Text="Nuevo Perfil" 
+                                    Command="{Binding CrearPerfilCommand}" 
+                                    Style="{StaticResource GoldenButton}" />
+                            <Button Text="Guardar" 
+                                    Command="{Binding GuardarPerfilCommand}" 
+                                    Style="{StaticResource GoldenButton}" />
+                            <Button Text="Eliminar" 
+                                    Command="{Binding EliminarPerfilCommand}" 
+                                    Style="{StaticResource DangerButton}" />
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Pie de página -->
+        <Grid Grid.Row="2" BackgroundColor="#121212" Padding="20,10">
+            <Label Text="© 2025 Sistema de Gestión de Perfiles - v1.0" 
+                   TextColor="#999999" 
+                   FontSize="12" 
+                   HorizontalOptions="Center" />
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interfases.Vistas.Login"
+             Background="Black">
+
+    <ContentPage.Resources>
+        <Style x:Key="GoldenButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#daa520" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="15,10" />
+        </Style>
+
+        <Style x:Key="EntryField" TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="#292929" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="PlaceholderColor" Value="#999999" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Logo y Header -->
+        <Border Grid.Row="0" BackgroundColor="#121212" Padding="10" StrokeThickness="0">
+            <Border.Shadow>
+                <Shadow Brush="#daa520" Offset="0,2" Opacity="0.5" Radius="5" />
+            </Border.Shadow>
+            <Label Text="AutoSecure" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   TextColor="#daa520" 
+                   HorizontalOptions="Center" />
+        </Border>
+
+        <!-- Contenido Principal -->
+        <Grid Grid.Row="1" Padding="20,100,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Imagen del Logo -->
+            <Image Source="fotorfid.png"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HeightRequest="320"
+                   WidthRequest="500"
+                   Margin="-50,-80,-20,10"
+                   Grid.Row="0"/>
+
+            <!-- Panel de Login -->
+            <Border Grid.Row="2" 
+                    BackgroundColor="#292929" 
+                    StrokeThickness="0"
+                    Padding="20,10,20,10"
+                    StrokeShape="RoundRectangle 15">
+                <Border.Shadow>
+                    <Shadow Brush="#daa520" Offset="3,3" Opacity="0.3" Radius="8" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="6" Margin="0">
+                    <Label Text="Iniciar Sesión" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="#daa520" 
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,10" />
+
+                    <!-- Campo de Usuario -->
+                    <Frame BackgroundColor="#1A1A1A" 
+                           BorderColor="#333333" 
+                           Padding="5,0" 
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label 
+                                   FontFamily="FontAwesome"
+                                   TextColor="#daa520"
+                                   FontSize="18"
+                                   VerticalOptions="Center"
+                                   Margin="10,0" />
+                            <Entry Grid.Column="1"
+                                   Placeholder="Nombre de Usuario"
+                                   Style="{StaticResource EntryField}"
+                                   BackgroundColor="Transparent" />
+                        </Grid>
+                    </Frame>
+
+                    <!-- Campo de Contraseña -->
+                    <Frame BackgroundColor="#1A1A1A" 
+                           BorderColor="#333333" 
+                           Padding="5,0" 
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Label 
+                                   FontFamily="FontAwesome"
+                                   TextColor="#daa520"
+                                   FontSize="18"
+                                   VerticalOptions="Center"
+                                   Margin="10,0" />
+                            <Entry Grid.Column="1"
+                                   Placeholder="Contraseña"
+                                   IsPassword="True"
+                                   Style="{StaticResource EntryField}"
+                                   BackgroundColor="Transparent" />
+                            <Button Grid.Column="2"
+                                    Text="&#xf06e;"
+                                    FontFamily="FontAwesome"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#999999"
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    CornerRadius="20" />
+                        </Grid>
+                    </Frame>
+
+                    <!-- Recordar usuario y olvidó contraseña -->
+                    <Grid ColumnDefinitions="*,*">
+                        <CheckBox Color="#daa520" Margin="30,0,0,0"/>
+                        <Label Grid.Column="0" 
+                               Text="Recordar" 
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               Margin="0" />
+                        <Button Grid.Column="1" 
+                               Text="Contactanos" 
+                               TextColor="#daa520"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"
+                                Background="Transparent"/>
+                    </Grid>
+
+                    <!-- Botón de Iniciar Sesión -->
+                    <Button Text="INICIAR SESIÓN"
+                            Style="{StaticResource GoldenButton}"
+                            HeightRequest="50"
+                            Command="{Binding LoginCommand}" 
+                            Clicked="EntrarClic"/>
+
+                    <!-- Línea divisoria -->
+                    <Grid ColumnDefinitions="*,Auto,*" Margin="0,10">
+                        <BoxView Grid.Column="0" 
+                                 HeightRequest="1" 
+                                 BackgroundColor="#444444"
+                                 VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="O" 
+                               TextColor="#999999"
+                               Margin="10,0" />
+                        <BoxView Grid.Column="2" 
+                                 HeightRequest="1" 
+                                 BackgroundColor="#444444"
+                                 VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- Registro -->
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="¿No tienes una cuenta?" 
+                               TextColor="White" />
+                        <Button Text="Registrarse" 
+                               TextColor="#daa520"
+                               FontAttributes="None"
+                                Clicked="Registrarclic"
+                                Background="Transparent"
+                                Margin="-10"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+        <!-- Footer -->
+        <Frame Grid.Row="3" 
+               BackgroundColor="#121212" 
+               BorderColor="Transparent"
+               Padding="10"
+               CornerRadius="0">
+            <Label Text="v1.0.0 © 2025 AutoSecure" 
+                   TextColor="#999999"
+                   HorizontalOptions="Center"
+                   FontSize="12" />
+        </Frame>
+    </Grid>
+</ContentPage>

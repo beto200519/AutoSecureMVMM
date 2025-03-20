@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interfases.Vistas.Permisos" 
+             Background="Black">
+
+
+    <ContentPage.Resources>
+    <Style x:Key="PageTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="#daa520" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,15" />
+    </Style>
+
+    <Style x:Key="SectionTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="#daa520" />
+        <Setter Property="Margin" Value="0,10,0,5" />
+    </Style>
+
+    <Style x:Key="FormLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="Margin" Value="0,10,0,5" />
+    </Style>
+
+    <Style x:Key="GoldenButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="#daa520" />
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="Margin" Value="0,15,0,0" />
+    </Style>
+
+    <Style x:Key="StyledPicker" TargetType="Picker">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="#292929" />
+        <Setter Property="TitleColor" Value="#999999" />
+    </Style>
+
+    <Style x:Key="StyledDatePicker" TargetType="DatePicker">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="#292929" />
+    </Style>
+
+    <Style x:Key="StyledTimePicker" TargetType="TimePicker">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="#292929" />
+    </Style>
+
+    <Style x:Key="StyledEditor" TargetType="Editor">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="#292929" />
+        <Setter Property="PlaceholderColor" Value="#999999" />
+    </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header con sombra dorada -->
+        <Border Grid.Row="0" BackgroundColor="#121212" Padding="15" StrokeThickness="0">
+            <Border.Shadow>
+                <Shadow Brush="#daa520" Offset="0,3" Opacity="0.4" Radius="5" />
+            </Border.Shadow>
+            <Label Text="Solicitud de Permisos de Acceso" 
+                  Style="{StaticResource PageTitle}"/>
+        </Border>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20" Spacing="15">
+
+                <!-- Tarjeta informativa -->
+                <Border BackgroundColor="#292929" StrokeThickness="1" Stroke="#333333" Padding="15" Margin="0,10,0,10">
+                    <Border.Shadow>
+                        <Shadow Brush="#daa520" Offset="3,3" Opacity="0.2" Radius="5" />
+                    </Border.Shadow>
+                    <StackLayout>
+                        <Label Text="Información" FontSize="16" FontAttributes="Bold" TextColor="#daa520" />
+                        <Label Text="Complete el formulario para solicitar acceso a un área específica. Recibirá una notificación cuando su solicitud sea aprobada." 
+                               TextColor="White" FontSize="14" Margin="0,5,0,0" />
+                    </StackLayout>
+                </Border>
+
+                <!-- Formulario principal -->
+                <Border BackgroundColor="#1A1A1A" Padding="20" StrokeThickness="1" Stroke="#333333">
+                    <Border.Shadow>
+                        <Shadow Brush="#daa520" Offset="4,4" Opacity="0.3" Radius="8" />
+                    </Border.Shadow>
+                    <StackLayout Spacing="15">
+                        <!-- Sección de Selección -->
+                        <Label Text="DETALLES DE LA SOLICITUD" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#daa520" 
+                               HorizontalOptions="Center"
+                               Margin="0,0,0,10" />
+
+                        <!-- Separador dorado -->
+                        <BoxView HeightRequest="1" 
+                                 BackgroundColor="#daa520" 
+                                 Opacity="0.6"
+                                 Margin="0,0,0,10" />
+
+                        <!-- Selección de Salón o Laboratorio -->
+                        <Label Text="Seleccione el Salón o Laboratorio:" 
+                               Style="{StaticResource FormLabel}" />
+
+                        <Border StrokeThickness="1" 
+                                Stroke="#daa520" 
+                                BackgroundColor="#292929" 
+                                Padding="2"
+                                HeightRequest="45">
+                            <Picker Title="Seleccionar..."
+                                    Style="{StaticResource StyledPicker}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Cisco</x:String>
+                                        <x:String>Microsoft</x:String>
+                                        <x:String>CDS</x:String>
+                                        <x:String>Aula activa</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Border>
+
+                        <!-- Selección de Fecha -->
+                        <Label Text="Seleccione la Fecha:" 
+                               Style="{StaticResource FormLabel}" />
+
+                        <Border StrokeThickness="1" 
+                                Stroke="#daa520" 
+                                BackgroundColor="#292929" 
+                                Padding="2"
+                                HeightRequest="45">
+                            <DatePicker Style="{StaticResource StyledDatePicker}" />
+                        </Border>
+
+                        <!-- Selección de Hora -->
+                        <Label Text="Seleccione la Hora:" 
+                               Style="{StaticResource FormLabel}" />
+
+                        <Border StrokeThickness="1" 
+                                Stroke="#daa520" 
+                                BackgroundColor="#292929" 
+                                Padding="2"
+                                HeightRequest="45">
+                            <TimePicker Style="{StaticResource StyledTimePicker}" />
+                        </Border>
+
+                        <!-- Justificación -->
+                        <Label Text="Razón o Justificación:" 
+                               Style="{StaticResource FormLabel}" />
+
+                        <Border StrokeThickness="1" 
+                                Stroke="#daa520" 
+                                BackgroundColor="#292929" 
+                                Padding="2"
+                                HeightRequest="120">
+                            <Editor Placeholder="Describa el motivo por el cual necesita acceso..."
+                                    Style="{StaticResource StyledEditor}" />
+                        </Border>
+
+
+                        <!-- Aceptar términos -->
+                        <Grid ColumnDefinitions="Auto, *" Margin="0,10,0,0">
+                            <CheckBox Grid.Column="0" Color="#daa520" />
+                            <Label Grid.Column="1" 
+                                   Text="Acepto los términos y condiciones de uso de las instalaciones" 
+                                   TextColor="White" 
+                                   VerticalOptions="Center" />
+                        </Grid>
+
+                        <!-- Botones de acción -->
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="15" Margin="0,15,0,0">
+                            <Button Grid.Column="0"
+                                    Text="Cancelar"
+                                    TextColor="#daa520"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="#daa520"
+                                    BorderWidth="1"
+                                    CornerRadius="10"
+                                    HeightRequest="50" />
+
+                            <Button Grid.Column="1"
+                                    Text="Enviar Solicitud"
+                                    Style="{StaticResource GoldenButton}" />
+                        </Grid>
+                    </StackLayout>
+                </Border>
+
+                <!-- Estado de solicitudes recientes -->
+                <Border BackgroundColor="#292929" StrokeThickness="1" Stroke="#333333" Padding="15" Margin="0,10,0,20">
+                    <StackLayout>
+                        <Label Text="Solicitudes Recientes" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="#daa520" />
+
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,5">
+                            <BoxView WidthRequest="12" 
+                                     HeightRequest="12" 
+                                     BackgroundColor="#55DD55" 
+                                     CornerRadius="6" 
+                                     VerticalOptions="Center" />
+                            <Label Text="Aula Cisco - Aprobada (15/03/2025)" 
+                                   TextColor="White" 
+                                   Margin="10,0,0,0" />
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                            <BoxView WidthRequest="12" 
+                                     HeightRequest="12" 
+                                     BackgroundColor="#DDDD55" 
+                                     CornerRadius="6" 
+                                     VerticalOptions="Center" />
+                            <Label Text="CDS - Pendiente (13/03/2025)" 
+                                   TextColor="White" 
+                                   Margin="10,0,0,0" />
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
