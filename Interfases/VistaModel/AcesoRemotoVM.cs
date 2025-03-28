@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Interfases.VistaModel
@@ -33,12 +28,15 @@ namespace Interfases.VistaModel
         public ICommand PuertaTappedCommand { get; }
         public ICommand SeguroTappedCommand { get; }
 
+#pragma warning disable CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         public AcesoRemotoVM()
+#pragma warning restore CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         {
             PuertaTappedCommand = new Command(async () => await OnPuertaTapped());
             SeguroTappedCommand = new Command(OnSeguroTapped);
         }
 
+        [Obsolete]
         private async Task OnPuertaTapped()
         {
             if (seguroActivado)

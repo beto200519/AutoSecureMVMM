@@ -1,4 +1,5 @@
 is_global = true
+build_property.RefitInternalNamespace = Interfases
 build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
 build_property._MvvmToolkitIsUsingWindowsRuntimePack = true
 build_property.CsWinRTComponent = 
@@ -104,9 +105,3 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Registro.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Registro.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\Registro.xaml
-
-[C:/Users/Norberto Carrillo/Source/Repos/Interfaces/Interfases/Vistas/Solicitud.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Solicitud.xaml
-build_metadata.AdditionalFiles.TargetPath = Vistas\Solicitud.xaml
-build_metadata.AdditionalFiles.RelativePath = Vistas\Solicitud.xaml

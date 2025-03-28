@@ -1,0 +1,210 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\vistamodel\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\vistamodel\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\vistas\\perfil.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\vistas\\perfil.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\vistamodel\\acesoremotovm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\vistamodel\\acesoremotovm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\modelo\\perfilmodelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\modelo\\perfilmodelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\vistamodel\\perfilmv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\vistamodel\\perfilmv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\modelo\\acesomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\modelo\\acesomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\vistamodel\\acesomv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\vistamodel\\acesomv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\modelo\\loginmodelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\modelo\\loginmodelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|c:\\users\\norberto carrillo\\source\\repos\\interfaces\\interfases\\modelo\\tokenressponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BCDFC20-1E36-4AF9-9A7C-C1C42360F794}|Interfases\\Interfases.csproj|solutionrelative:interfases\\modelo\\tokenressponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Perfil.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Vistas\\Perfil.xaml.cs",
+              "RelativeDocumentMoniker": "Interfases\\Vistas\\Perfil.xaml.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Vistas\\Perfil.xaml.cs",
+              "RelativeToolTip": "Interfases\\Vistas\\Perfil.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T19:12:37.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TokenRessponse.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\TokenRessponse.cs",
+              "RelativeDocumentMoniker": "Interfases\\Modelo\\TokenRessponse.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\TokenRessponse.cs",
+              "RelativeToolTip": "Interfases\\Modelo\\TokenRessponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T18:59:17.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginModelo.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\LoginModelo.cs",
+              "RelativeDocumentMoniker": "Interfases\\Modelo\\LoginModelo.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\LoginModelo.cs",
+              "RelativeToolTip": "Interfases\\Modelo\\LoginModelo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T18:55:59.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AcesoMV.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\AcesoMV.cs",
+              "RelativeDocumentMoniker": "Interfases\\VistaModel\\AcesoMV.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\AcesoMV.cs",
+              "RelativeToolTip": "Interfases\\VistaModel\\AcesoMV.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T17:21:20.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "acesoModel.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\acesoModel.cs",
+              "RelativeDocumentMoniker": "Interfases\\Modelo\\acesoModel.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\acesoModel.cs",
+              "RelativeToolTip": "Interfases\\Modelo\\acesoModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T15:58:36.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Services\\ApiService.cs",
+              "RelativeDocumentMoniker": "Interfases\\Services\\ApiService.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Services\\ApiService.cs",
+              "RelativeToolTip": "Interfases\\Services\\ApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T19:41:20.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PerfilMV.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\PerfilMV.cs",
+              "RelativeDocumentMoniker": "Interfases\\VistaModel\\PerfilMV.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\PerfilMV.cs",
+              "RelativeToolTip": "Interfases\\VistaModel\\PerfilMV.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T22:42:04.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginVM.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\LoginVM.cs",
+              "RelativeDocumentMoniker": "Interfases\\VistaModel\\LoginVM.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\LoginVM.cs",
+              "RelativeToolTip": "Interfases\\VistaModel\\LoginVM.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwCEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T22:42:30.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PerfilModelo.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\PerfilModelo.cs",
+              "RelativeDocumentMoniker": "Interfases\\Modelo\\PerfilModelo.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Modelo\\PerfilModelo.cs",
+              "RelativeToolTip": "Interfases\\Modelo\\PerfilModelo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T15:36:08.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AcesoRemotoVM.cs",
+              "DocumentMoniker": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\AcesoRemotoVM.cs",
+              "RelativeDocumentMoniker": "Interfases\\VistaModel\\AcesoRemotoVM.cs",
+              "ToolTip": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\VistaModel\\AcesoRemotoVM.cs",
+              "RelativeToolTip": "Interfases\\VistaModel\\AcesoRemotoVM.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAiwAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T06:15:58.107Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

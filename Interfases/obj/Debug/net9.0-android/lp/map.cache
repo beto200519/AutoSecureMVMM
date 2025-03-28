@@ -167,3 +167,11 @@ Microsoft.Maui.aar
 Microsoft.Maui.Essentials.aar
 Xamarin.Google.Crypto.Tink.Android.aar
 Xamarin.Google.ErrorProne.Annotations.aar
+Xamarin.Google.Guava.ListenableFuture.aar
+Xamarin.Jetbrains.Annotations.aar
+Xamarin.Kotlin.StdLib.aar
+Xamarin.KotlinX.AtomicFU.aar
+Xamarin.KotlinX.AtomicFU.Jvm.aar
+Xamarin.KotlinX.Coroutines.Android.aar
+Xamarin.KotlinX.Coroutines.Core.aar
+Xamarin.KotlinX.Coroutines.Core.Jvm.aar

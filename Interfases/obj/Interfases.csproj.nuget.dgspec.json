@@ -79,11 +79,23 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Microsoft.Maui.Essentials": {
+              "target": "Package",
+              "version": "[9.0.50, )"
+            },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Refit": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -122,11 +134,23 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Microsoft.Maui.Essentials": {
+              "target": "Package",
+              "version": "[9.0.50, )"
+            },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Refit": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -165,11 +189,23 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Microsoft.Maui.Essentials": {
+              "target": "Package",
+              "version": "[9.0.50, )"
+            },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Refit": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -208,6 +244,18 @@
             "Microsoft.Maui.Controls": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.Maui.Essentials": {
+              "target": "Package",
+              "version": "[9.0.50, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Refit": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

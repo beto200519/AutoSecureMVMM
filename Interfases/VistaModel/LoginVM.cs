@@ -1,67 +1,37 @@
-﻿using System.Windows.Input;
+﻿using MiAppMaui.Services;
+using Interfases.Modelo;
 
-namespace Interfases.VistaModel
+
+namespace Interfases.ViewModel
 {
-    public class LoginVM : BindableObject
+    public class LoginVM 
     {
-        private string _email;
-        private string _password;
-       // private readonly MongoDBService _mongoDBService;
+        private readonly ApiService _apiService;
 
-        public string Email
-        {
-            get => _email;
-            set
-            {
-                _email = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Password
-        {
-            get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand LoginCommand { get; }
-        public ICommand ContactUsCommand { get; }
+        public string Usuario { get; set; }
+        public string Contrasena { get; set; }
 
         public LoginVM()
         {
-            /*      _mongoDBService = new MongoDBService();
-                    LoginCommand = new Command(OnLogin);
-                    ContactUsCommand = new Command(OnContactUsClicked);
-                }
-
-                private async void OnLogin()
-                {
-                 //   var user = await _mongoDBService.AuthenticateUser(Email, Password);
-                    if (user != null)
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Éxito", "Inicio de sesión exitoso", "OK");
-                    }
-                    else
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Error", "Credenciales incorrectas", "OK");
-                    }
-                */
+            _apiService = new ApiService();
         }
-        private async void OnContactUsClicked()
+
+        // Método para realizar el login
+        public async Task<bool> LoginAsync()
         {
-            // Dirección de correo a la que se enviará el email
-            string email = "norbertocarrillo2005@gmail.com";
-            string subject = "Consulta sobre AutoSecure";  // Puedes cambiar el asunto
-            string body = "Hola, me gustaría obtener más información sobre..."; // Cuerpo del mensaje
+            if (string.IsNullOrEmpty(Usuario) || string.IsNullOrEmpty(Contrasena))
+            {
+                // Mostrar error de campos vacíos
+                return false;
+            }
 
-            // Usamos el Launcher para abrir el cliente de correo
-            var emailUri = new Uri($"mailto:{email}?subject={subject}&body={body}");
-            await Launcher.OpenAsync(emailUri);
+            var loginData = new LoginModelo
+            {
+                Usuario = Usuario,
+                Contrasena = Contrasena
+            };
+
+            return await _apiService.LoginAsync(loginData);
         }
-
     }
 }

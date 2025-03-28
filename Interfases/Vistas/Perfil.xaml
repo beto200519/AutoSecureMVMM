@@ -6,13 +6,12 @@
              x:Class="Interfases.Vistas.Perfil"
            BackgroundColor="black">
 
+
     <ContentPage.BindingContext>
         <vm:PerfilMV />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
-   
-
         <Style x:Key="PageTitle" TargetType="Label">
             <Setter Property="FontSize" Value="28" />
             <Setter Property="FontAttributes" Value="Bold" />
@@ -92,10 +91,10 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Text="Gestión de Perfiles" Style="{StaticResource PageTitle}" />
+                <Label Grid.Column="0" Text="Perfil de Usuario" Style="{StaticResource PageTitle}" />
 
                 <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
-                    <Label Text="{Binding PerfilActual.TipoPerfil}" 
+                    <Label Text="{Binding TipoPerfil}" 
                            TextColor="#daa520" 
                            FontAttributes="Bold" 
                            VerticalOptions="Center" 
@@ -108,138 +107,30 @@
                             Stroke="#daa520" 
                             StrokeThickness="1" 
                             Margin="0,0,10,0">
-                        <Image Source="{Binding PerfilActual.Foto}" Aspect="AspectFill" />
+                        <Image Source="{Binding Foto}" Aspect="AspectFill" />
                     </Border>
                 </HorizontalStackLayout>
             </Grid>
         </Border>
 
-        <!-- Contenido Principal -->
+        <!-- Contenido del Perfil -->
         <ScrollView Grid.Row="1">
             <StackLayout Padding="20" Spacing="15">
-                <!-- Mensaje de Acción -->
-                <Label Text="{Binding MensajeAccion}" 
-                       TextColor="#daa520" 
-                       FontSize="16" 
-                       HorizontalOptions="Center"
-                       IsVisible="{Binding MensajeAccion, Converter={StaticResource StringNotEmptyConverter}}" />
-
-                <!-- Búsqueda y Filtros -->
+                <!-- Información Personal -->
                 <Border Style="{StaticResource CardStyle}">
                     <StackLayout>
-                        <Label Text="BÚSQUEDA Y FILTROS" Style="{StaticResource SectionTitle}" />
-                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
+                        <!-- Título de sección -->
+                        <Label Text="INFORMACIÓN PERSONAL" Style="{StaticResource SectionTitle}" />
+
+                        <!-- Separador dorado -->
+                        <BoxView HeightRequest="1" 
+                                 BackgroundColor="#daa520" 
+                                 Opacity="0.6"
+                                 Margin="0,0,0,10" />
 
                         <Grid ColumnSpacing="10" RowSpacing="8">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <Entry Grid.Column="0" 
-                                   Placeholder="Buscar perfiles por nombre" 
-                                   Text="{Binding BusquedaTexto}" 
-                                   TextColor="White" 
-                                   BackgroundColor="#292929"
-                                   PlaceholderColor="#666666" />
-
-                            <Button Grid.Column="1" 
-                                    Text="Buscar" 
-                                    Command="{Binding BuscarCommand}" 
-                                    Style="{StaticResource GoldenButton}" />
-                        </Grid>
-
-                        <HorizontalStackLayout Spacing="10" Margin="0,10,0,0" HorizontalOptions="Center">
-                            <Button Text="Todos" 
-                                    Command="{Binding FiltrarPerfilesCommand}" 
-                                    CommandParameter="Todos"
-                                    Style="{StaticResource GoldenButton}" />
-                            <Button Text="Administrador" 
-                                    Command="{Binding FiltrarPerfilesCommand}" 
-                                    CommandParameter="Administrador"
-                                    Style="{StaticResource GoldenButton}" />
-                            <Button Text="Usuario" 
-                                    Command="{Binding FiltrarPerfilesCommand}" 
-                                    CommandParameter="Usuario"
-                                    Style="{StaticResource GoldenButton}" />
-                        </HorizontalStackLayout>
-                    </StackLayout>
-                </Border>
-
-                <!-- Lista de Perfiles -->
-                <Border Style="{StaticResource CardStyle}">
-                    <StackLayout>
-                        <Label Text="LISTA DE PERFILES" Style="{StaticResource SectionTitle}" />
-                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
-
-                        <CollectionView ItemsSource="{Binding PerfilesFiltrados}"
-                                        SelectionMode="Single"
-                                        EmptyView="No se encontraron perfiles que coincidan con la búsqueda">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Style="{StaticResource CardStyle}" Margin="0,5">
-                                        <Grid ColumnSpacing="10">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <!-- Foto del Perfil -->
-                                            <Border Grid.Column="0" 
-                                                    WidthRequest="50" 
-                                                    HeightRequest="50" 
-                                                    StrokeShape="RoundRectangle 25" 
-                                                    BackgroundColor="#292929"
-                                                    Stroke="#daa520" 
-                                                    StrokeThickness="1">
-                                                <Image Source="{Binding Foto}" Aspect="AspectFill" />
-                                            </Border>
-
-                                            <!-- Información del Perfil -->
-                                            <StackLayout Grid.Column="1" VerticalOptions="Center">
-                                                <Label Text="{Binding Nombre, StringFormat='{0} {1}'}" 
-                                                       TextColor="White" 
-                                                       FontAttributes="Bold" />
-                                                <Label Text="{Binding Apellido}" 
-                                                       TextColor="White" 
-                                                       FontAttributes="Bold" />
-                                                <Label Text="{Binding TipoPerfil}" 
-                                                       TextColor="#cccccc" 
-                                                       FontSize="12" />
-                                                <HorizontalStackLayout>
-                                                    <Label Text="Estado: " 
-                                                           TextColor="#cccccc" 
-                                                           FontSize="12" />
-                                                    <Label Text="{Binding EstadoActivo, Converter={StaticResource BoolToEstadoConverter}}" 
-                                                           TextColor="{Binding EstadoActivo, Converter={StaticResource BoolToColorConverter}}" 
-                                                           FontSize="12" />
-                                                </HorizontalStackLayout>
-                                            </StackLayout>
-
-                                            <!-- Botón de Editar -->
-                                            <Button Grid.Column="2" 
-                                                    Text="Editar" 
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PerfilMV}}, Path=EditarPerfilCommand}" 
-                                                    CommandParameter="{Binding .}"
-                                                    Style="{StaticResource GoldenButton}" />
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </Border>
-
-                <!-- Formulario de Perfil -->
-                <Border Style="{StaticResource CardStyle}">
-                    <StackLayout>
-                        <Label Text="DATOS DEL PERFIL" Style="{StaticResource SectionTitle}" />
-                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
-
-                        <Grid ColumnSpacing="10" RowSpacing="8">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="140" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -247,78 +138,94 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="Nombre Completo:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding NombreCompleto}" Style="{StaticResource FormValue}" />
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Email:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Email}" Style="{StaticResource FormValue}" />
+
+                            <Label Grid.Row="2" Grid.Column="0" Text="Tipo de Perfil:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding TipoPerfil}" Style="{StaticResource FormValue}" />
+
+                            <Label Grid.Row="3" Grid.Column="0" Text="Estado:" Style="{StaticResource FormLabel}" />
+                            <HorizontalStackLayout Grid.Row="3" Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding EstadoTexto}" Style="{StaticResource FormValue}" />
+                                <Ellipse Fill="{Binding EstadoColor}" WidthRequest="12" HeightRequest="12" VerticalOptions="Center" Margin="5,0,0,0" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Border>
+
+                <!-- Información Adicional -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackLayout>
+                        <!-- Título de sección -->
+                        <Label Text="INFORMACIÓN ADICIONAL" Style="{StaticResource SectionTitle}" />
+
+                        <!-- Separador dorado -->
+                        <BoxView HeightRequest="1" 
+                                 BackgroundColor="#daa520" 
+                                 Opacity="0.6"
+                                 Margin="0,0,0,10" />
+
+                        <Grid ColumnSpacing="10" RowSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="0" Text="ID:" Style="{StaticResource FormLabel}" />
-                            <Entry Grid.Row="0" Grid.Column="1" 
-                                   Text="{Binding PerfilActual.IdPerfil}" 
-                                   IsEnabled="False"
-                                   TextColor="White" 
-                                   BackgroundColor="#292929" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Fecha de Registro:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding FechaFormateada}" Style="{StaticResource FormValue}" />
 
-                            <Label Grid.Row="1" Grid.Column="0" Text="Nombre:" Style="{StaticResource FormLabel}" />
-                            <Entry Grid.Row="1" Grid.Column="1" 
-                                   Text="{Binding PerfilActual.Nombre}" 
-                                   TextColor="White" 
-                                   BackgroundColor="#292929" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="Horario de Acceso:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding HorarioAcceso}" Style="{StaticResource FormValue}" />
 
-                            <Label Grid.Row="2" Grid.Column="0" Text="Apellido:" Style="{StaticResource FormLabel}" />
-                            <Entry Grid.Row="2" Grid.Column="1" 
-                                   Text="{Binding PerfilActual.Apellido}" 
-                                   TextColor="White" 
-                                   BackgroundColor="#292929" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="Días de Acceso:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding DiasAcceso}" Style="{StaticResource FormValue}" />
 
-                            <Label Grid.Row="3" Grid.Column="0" Text="Tipo de Perfil:" Style="{StaticResource FormLabel}" />
-                            <Picker Grid.Row="3" Grid.Column="1" 
-                                    SelectedItem="{Binding PerfilActual.TipoPerfil}"
-                                    TextColor="White" 
-                                    BackgroundColor="#292929"
-                                    TitleColor="#cccccc">
-                                <Picker.Items>
-                                    <x:String>Administrador</x:String>
-                                    <x:String>Usuario</x:String>
-                                </Picker.Items>
-                            </Picker>
-
-                            <Label Grid.Row="4" Grid.Column="0" Text="Foto:" Style="{StaticResource FormLabel}" />
-                            <Entry Grid.Row="4" Grid.Column="1" 
-                                   Text="{Binding PerfilActual.Foto}" 
-                                   TextColor="White" 
-                                   BackgroundColor="#292929" />
-
-                            <Label Grid.Row="5" Grid.Column="0" Text="Estado Activo:" Style="{StaticResource FormLabel}" />
-                            <Switch Grid.Row="5" Grid.Column="1" 
-                                    IsToggled="{Binding PerfilActual.EstadoActivo}"
-                                    OnColor="#daa520"
-                                    ThumbColor="White"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center" />
+                            <Label Grid.Row="3" Grid.Column="0" Text="Puerta de Acceso:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding PuertaAcceso}" Style="{StaticResource FormValue}" />
                         </Grid>
+                    </StackLayout>
+                </Border>
 
-                        <HorizontalStackLayout Spacing="10" Margin="0,20,0,0" HorizontalOptions="Center">
-                            <Button Text="Nuevo Perfil" 
-                                    Command="{Binding CrearPerfilCommand}" 
-                                    Style="{StaticResource GoldenButton}" />
-                            <Button Text="Guardar" 
-                                    Command="{Binding GuardarPerfilCommand}" 
-                                    Style="{StaticResource GoldenButton}" />
-                            <Button Text="Eliminar" 
-                                    Command="{Binding EliminarPerfilCommand}" 
-                                    Style="{StaticResource DangerButton}" />
-                        </HorizontalStackLayout>
+                <!-- Footer con información -->
+                <Border BackgroundColor="#292929" Padding="15" StrokeThickness="0">
+                    <StackLayout HorizontalOptions="Center">
+                        <Label Text="Panel de Usuario v1.0" 
+                               TextColor="#999999" 
+                               FontSize="12" 
+                               HorizontalOptions="Center" />
+                        <Label Text="© 2025 Todos los derechos reservados" 
+                               TextColor="#999999" 
+                               FontSize="12" 
+                               HorizontalOptions="Center" />
                     </StackLayout>
                 </Border>
             </StackLayout>
         </ScrollView>
 
-        <!-- Pie de página -->
+        <!-- Pie de página con botones -->
         <Grid Grid.Row="2" BackgroundColor="#121212" Padding="20,10">
-            <Label Text="© 2025 Sistema de Gestión de Perfiles - v1.0" 
-                   TextColor="#999999" 
-                   FontSize="12" 
-                   HorizontalOptions="Center" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" 
+                    Text="CERRAR SESIÓN" 
+                    Command="{Binding CerrarSesionCommand}" 
+                    Style="{StaticResource DangerButton}" 
+                    Margin="5,0,0,0" 
+                    Clicked="VolLogClic"/>
         </Grid>
     </Grid>
 </ContentPage>

@@ -1,143 +1,180 @@
-using Interfases.VistaModel;
+using MiAppMaui.Services;  // Asegúrate de incluir el espacio de nombres de ApiService
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+using Interfases.Vistas;
+using Interfases.Modelo;
 
-public class PerfilMV : INotifyPropertyChanged
+namespace Interfases.VistaModel
 {
-    private ObservableCollection<PerfilModelo> _perfiles;
-    private ObservableCollection<PerfilModelo> _perfilesFiltrados;
-    private PerfilModelo _perfilActual;
-    private string _busquedaTexto;
-    private string _mensajeAccion;
-
-    public ObservableCollection<PerfilModelo> Perfiles
+    public class PerfilMV : INotifyPropertyChanged
     {
-        get => _perfiles;
-        set { _perfiles = value; OnPropertyChanged(); }
-    }
+        private readonly ApiService _apiService;
 
-    public ObservableCollection<PerfilModelo> PerfilesFiltrados
+        // Propiedades para los datos del perfil
+        private string _nombreCompleto;
+        private string _email;
+        private string _tipoPerfil;
+        private string _estadoTexto;
+        private string _foto;
+        private string _fechaFormateada;
+        private string _horarioAcceso;
+        private string _diasAcceso;
+        private string _puertaAcceso;
+        private string _estadoColor;
+
+        // Propiedades para binding a la vista
+        public string NombreCompleto
+        {
+            get => _nombreCompleto;
+            set { _nombreCompleto = value; OnPropertyChanged(); }
+        }
+
+        public string Email
+        {
+            get => _email;
+            set { _email = value; OnPropertyChanged(); }
+        }
+
+        public string TipoPerfil
+        {
+            get => _tipoPerfil;
+            set { _tipoPerfil = value; OnPropertyChanged(); }
+        }
+
+        public string EstadoTexto
+        {
+            get => _estadoTexto;
+            set { _estadoTexto = value; OnPropertyChanged(); }
+        }
+
+        public string Foto
+        {
+            get => _foto;
+            set { _foto = value; OnPropertyChanged(); }
+        }
+
+        public string FechaFormateada
+        {
+            get => _fechaFormateada;
+            set { _fechaFormateada = value; OnPropertyChanged(); }
+        }
+
+        public string HorarioAcceso
+        {
+            get => _horarioAcceso;
+            set { _horarioAcceso = value; OnPropertyChanged(); }
+        }
+
+        public string DiasAcceso
+        {
+            get => _diasAcceso;
+            set { _diasAcceso = value; OnPropertyChanged(); }
+        }
+
+        public string PuertaAcceso
+        {
+            get => _puertaAcceso;
+            set { _puertaAcceso = value; OnPropertyChanged(); }
+        }
+
+        public string EstadoColor
+        {
+            get => _estadoColor;
+            set { _estadoColor = value; OnPropertyChanged(); }
+        }
+
+        public string MensajeAccion { get; set; }
+
+        // Comando para cerrar sesión
+        public ICommand CerrarSesionCommand { get; }
+
+        // Constructor público sin parámetros
+        public PerfilMV(ApiService apiService)
+        {
+            _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
+
+            // Inicialización de los comandos
+            CerrarSesionCommand = new Command(async () => await CerrarSesion());
+
+            // Obtener los datos del perfil
+            ObtenerPerfil();
+        }
+
+        public PerfilMV()
+        {
+        }
+
+        // Método para obtener los datos del perfil desde la API
+        private async Task ObtenerPerfil()
+{
+    try
     {
-        get => _perfilesFiltrados;
-        set { _perfilesFiltrados = value; OnPropertyChanged(); }
-    }
+        // Asegúrate de especificar el tipo T aquí. Si la respuesta es un objeto perfil, especifica el tipo del perfil.
+        var perfil = await _apiService.GetProfileDataAsync<PerfilModelo>("perfil"); // Cambia Perfil por el tipo correcto
 
-    public PerfilModelo PerfilActual
-    {
-        get => _perfilActual;
-        set { _perfilActual = value ?? new PerfilModelo(); OnPropertyChanged(); }
-    }
-
-    public string BusquedaTexto
-    {
-        get => _busquedaTexto;
-        set { _busquedaTexto = value; OnPropertyChanged(); }
-    }
-
-    public string MensajeAccion
-    {
-        get => _mensajeAccion;
-        set { _mensajeAccion = value; OnPropertyChanged(); }
-    }
-
-    public ICommand BuscarCommand { get; }
-    public ICommand FiltrarPerfilesCommand { get; }
-    public ICommand EditarPerfilCommand { get; }
-    public ICommand CrearPerfilCommand { get; }
-    public ICommand GuardarPerfilCommand { get; }
-    public ICommand EliminarPerfilCommand { get; }
-
-    public PerfilMV()
-    {
-        _perfiles = new ObservableCollection<PerfilModelo>
-            {
-                new PerfilModelo { IdPerfil = 1, Nombre = "Norberto", Apellido = "Carrillo", TipoPerfil = "Administrador", Foto = "foto1.jpg", EstadoActivo = true },
-                new PerfilModelo { IdPerfil = 2, Nombre = "Nicol", Apellido = "Gastelum", TipoPerfil = "Usuario", Foto = "foto2.jpg", EstadoActivo = true },
-                new PerfilModelo { IdPerfil = 3, Nombre = "Jose Luis", Apellido = "Martínez", TipoPerfil = "Usuario", Foto = "foto3.jpg", EstadoActivo = false }
-            };
-
-        _perfilesFiltrados = new ObservableCollection<PerfilModelo>(_perfiles);
-        _perfilActual = new PerfilModelo();
-
-        BuscarCommand = new Command(BuscarPerfiles);
-        FiltrarPerfilesCommand = new Command<string>(FiltrarPerfiles);
-        EditarPerfilCommand = new Command<PerfilModelo>(EditarPerfil);
-        CrearPerfilCommand = new Command(CrearPerfil);
-        GuardarPerfilCommand = new Command(GuardarPerfil);
-        EliminarPerfilCommand = new Command(EliminarPerfil);
-    }
-
-    private void EditarPerfil(PerfilModelo perfil)
-    {
         if (perfil != null)
         {
-            PerfilActual = perfil;
+            // Asignar los valores del perfil obtenidos de la API
+            NombreCompleto = perfil.NombreCompleto;
+            Email = perfil.Email;
+            TipoPerfil = perfil.TipoPerfil;
+            EstadoTexto = perfil.EstadoTexto;
+            Foto = perfil.Foto;
+            FechaFormateada = perfil.FechaFormateada;
+            HorarioAcceso = perfil.HorarioAcceso;
+            DiasAcceso = perfil.DiasAcceso;
+            PuertaAcceso = perfil.PuertaAcceso;
+            EstadoColor = perfil.EstadoColor;
         }
-    }
-
-    private void BuscarPerfiles()
-    {
-        PerfilesFiltrados = string.IsNullOrWhiteSpace(BusquedaTexto)
-            ? new ObservableCollection<PerfilModelo>(_perfiles)
-            : new ObservableCollection<PerfilModelo>(_perfiles.Where(p => p.Nombre.ToLower().Contains(BusquedaTexto.ToLower())));
-    }
-
-    private void FiltrarPerfiles(string filtro)
-    {
-        PerfilesFiltrados = filtro == "Todos"
-            ? new ObservableCollection<PerfilModelo>(_perfiles)
-            : new ObservableCollection<PerfilModelo>(_perfiles.Where(p => p.TipoPerfil == filtro));
-    }
-
-    private void CrearPerfil()
-    {
-        PerfilActual = new PerfilModelo();
-        MensajeAccion = "Nuevo perfil creado.";
-    }
-
-    private void GuardarPerfil()
-    {
-        if (!Perfiles.Contains(PerfilActual))
+        else
         {
-            _perfiles.Add(PerfilActual);
-        }
-        MensajeAccion = "Perfil guardado correctamente.";
-        PerfilesFiltrados = new ObservableCollection<PerfilModelo>(_perfiles);
-    }
-
-    private void EliminarPerfil()
-    {
-        if (Perfiles.Contains(PerfilActual))
-        {
-            _perfiles.Remove(PerfilActual);
-            PerfilActual = new PerfilModelo();
-            MensajeAccion = "Perfil eliminado correctamente.";
-            PerfilesFiltrados = new ObservableCollection<PerfilModelo>(_perfiles);
+            MensajeAccion = "No se pudo obtener el perfil.";
         }
     }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    catch (Exception ex)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        MensajeAccion = $"Error al obtener los datos del perfil: {ex.Message}";
     }
 }
 
-public class Command : ICommand
-{
-    private readonly Action _execute;
-    private readonly Func<bool> _canExecute;
 
-    public event EventHandler CanExecuteChanged;
+        // Método para cerrar sesión y redirigir
+        private async Task CerrarSesion()
+        {
+            try
+            {
+                var success = await _apiService.PostDataAsync<object>("logout", null); // Cambia "logout" a tu endpoint correspondiente
 
-    public Command(Action execute, Func<bool> canExecute = null)
-    {
-        _execute = execute;
-        _canExecute = canExecute;
+                if (success)
+                {
+                    MensajeAccion = "Has cerrado sesión correctamente.";
+                    RedirigirAPaginaDeLogin();
+                }
+                else
+                {
+                    MensajeAccion = "Hubo un problema al cerrar sesión.";
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeAccion = $"Error en el cierre de sesión: {ex.Message}";
+            }
+        }
+
+        // Redirige a la página de login
+        private void RedirigirAPaginaDeLogin()
+        {
+            // Lógica de redirección a la página de login usando navegación
+            // Si estás usando Xamarin.Forms o MAUI, puedes hacer algo como esto:
+            Application.Current.MainPage = new NavigationPage(new Login());
+        }
+
+        // Notificación de cambios
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
-
-    public bool CanExecute(object parameter) => _canExecute == null || _canExecute();
-    public void Execute(object parameter) => _execute();
 }

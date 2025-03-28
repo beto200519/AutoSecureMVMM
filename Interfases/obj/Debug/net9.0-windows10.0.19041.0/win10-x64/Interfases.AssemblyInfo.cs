@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Interfases")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+4216b57a3bc7e725061507c656bbf645242dd27b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Interfases")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Interfases")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

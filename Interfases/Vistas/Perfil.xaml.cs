@@ -10,4 +10,9 @@ public partial class Perfil : ContentPage
         BindingContext = new PerfilMV();
 
     }
+    private async void VolLogClic(object sender, EventArgs e)
+    {
+        // Navegar a la página de Registro
+        await Navigation.PushAsync(new Login());
+    }
 }

@@ -132,7 +132,8 @@
                                TextColor="#daa520"
                                VerticalOptions="Center"
                                HorizontalOptions="End"
-                                Background="Transparent"/>
+                                Background="Transparent"
+                              Command="{Binding ContactUsCommand}"/>
                     </Grid>
 
                     <!-- Botón de Iniciar Sesión -->

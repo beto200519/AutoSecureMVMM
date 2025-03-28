@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interfases.Modelo
+﻿namespace Interfases.Modelo
 {
     public class PerfilModelo
     {
-        public int IdPerfil { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public string NombreCompleto { get; set; }
+        public string Email { get; set; }
         public string TipoPerfil { get; set; }
+        public string EstadoTexto { get; set; }
         public string Foto { get; set; }
-        public bool EstadoActivo { get; set; }
+        public string FechaFormateada { get; set; }
+        public string HorarioAcceso { get; set; }
+        public string DiasAcceso { get; set; }
+        public string PuertaAcceso { get; set; }
+        public string EstadoColor { get; set; }
     }
 }
