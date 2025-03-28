@@ -1,10 +1,8 @@
 using Interfases.VistaModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
-using Interfases.Modelo;
 using System.Runtime.CompilerServices;
-namespace Interfases.VistaModel;
+using System.Threading.Tasks;
 
 public class PerfilMV : INotifyPropertyChanged
 {
