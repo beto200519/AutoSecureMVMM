@@ -1,10 +1,10 @@
 ﻿using MiAppMaui.Services;
 using Interfases.Modelo;
-
+using System.Threading.Tasks;
 
 namespace Interfases.ViewModel
 {
-    public class LoginVM 
+    public class LoginVM
     {
         private readonly ApiService _apiService;
 
@@ -31,7 +31,17 @@ namespace Interfases.ViewModel
                 Contrasena = Contrasena
             };
 
-            return await _apiService.LoginAsync(loginData);
+            // Llamar al método de ApiService para hacer el login
+            bool isSuccess = await _apiService.LoginAsync(loginData);
+
+            if (!isSuccess)
+            {
+                // Mostrar error de login fallido
+                return false;
+            }
+
+            // Si el login es exitoso, puedes almacenar un token o realizar alguna acción
+            return true;
         }
     }
 }

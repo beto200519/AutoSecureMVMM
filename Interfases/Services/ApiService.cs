@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
 using System.Net.Http.Headers;
+using Interfases.Modelo;
 
 namespace MiAppMaui.Services
 {
     public class ApiService
     {
         private readonly HttpClient _httpClient;
-        private const string _baseUrl = "https://tuapi.com"; // Cambia esto a la URL de tu API
+        private const string _baseUrl = "http://172.16.42.88:5000/api"; // Cambia esto a la IP de tu API
 
         public ApiService()
         {
@@ -97,6 +98,11 @@ namespace MiAppMaui.Services
         public async Task<T> GetProfileDataAsync<T>(string endpoint)
         {
             return await GetDataAsync<T>(endpoint);
+        }
+
+        internal async Task<bool> LoginAsync(LoginModelo loginData)
+        {
+            throw new NotImplementedException();
         }
     }
 }
