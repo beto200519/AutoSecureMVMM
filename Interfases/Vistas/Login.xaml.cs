@@ -1,30 +1,41 @@
-namespace Interfases.Vistas;
+using Interfases.VistaModel;
 
-public partial class Login : ContentPage
+namespace Interfases.Vistas
 {
-    public Login()
+    public partial class Login : ContentPage
     {
-        InitializeComponent();
-    }
-    private async void EntrarClic(object sender, EventArgs e)
-    {
-        // Navegar a la página de Login
-        await Navigation.PushAsync(new AppShell());
-    }
-    private async void Registrarclic(object sender, EventArgs e)
-    {
-        // Navegar a la página de Registro
-        await Navigation.PushAsync(new Registro());
-    }
-     private async void OnContactUsClicked()
+        // Constructor sin parámetros
+        public Login()
         {
-            // Dirección de correo a la que se enviará el email
-            string email = "norbertocarrillo2005@gmail.com";
-            string subject = "Consulta sobre AutoSecure";  // Puedes cambiar el asunto
-            string body = "Hola, me gustaría obtener más información sobre..."; // Cuerpo del mensaje
-
-            // Usamos el Launcher para abrir el cliente de correo
-            var emailUri = new Uri($"mailto:{email}?subject={subject}&body={body}");
-            await Launcher.OpenAsync(emailUri);
+            InitializeComponent();
         }
+
+        // Constructor con ViewModel como parámetro
+        public Login(LoginVM viewModel)
+        {
+            InitializeComponent();
+            BindingContext = viewModel;  // Asigna el ViewModel al BindingContext de la página
+        }
+
+        // Método de evento para el clic del botón "Entrar"
+        private async void EntrarClic(object sender, EventArgs e)
+        {
+            var viewModel = (LoginVM)BindingContext;
+
+            if (viewModel == null)
+            {
+                Console.WriteLine("Error: El BindingContext no está asignado correctamente.");
+                return;
+            }
+
+            // Ejecuta el comando IniciarSesionAsync del ViewModel
+            await viewModel.IniciarSesionAsync();
+
+            // Si hay un mensaje de error, lo mostramos en la interfaz de usuario
+            if (!string.IsNullOrEmpty(viewModel.ErrorMessage))
+            {
+                await DisplayAlert("Error", viewModel.ErrorMessage, "OK");
+            }
+        }
+    }
 }

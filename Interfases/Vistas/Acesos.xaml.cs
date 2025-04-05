@@ -1,29 +1,50 @@
+using Interfases.Modelo;
 using Interfases.VistaModel;
-using Microsoft.Maui.Controls;
 
-namespace Interfases.Vistas;
-
-public partial class Acesos : ContentPage
+namespace Interfases.Vistas
 {
-	public Acesos()
-	{
-		InitializeComponent();
-        BindingContext = new AcesoMV();
-
-    }
-
-    private void Button_Clicked(object sender, EventArgs e)
+    public partial class Acesos : ContentPage
     {
+        private AcesoMV ViewModel;
 
-    }
+        public Acesos()
+        {
+            InitializeComponent();
+            ViewModel = new AcesoMV();
+            BindingContext = ViewModel;
+        }
 
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
-    {
+        // Filtra todos los usuarios (sin ningún filtro de rol)
+        private void FiltraTodos_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.FiltrarUsuarios(""); // Muestra todos los usuarios
+        }
 
-    }
+        // Filtra usuarios con rol 'Administrador'
+        private void FiltraAdmin_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.FiltrarUsuarios("Administrador");
+        }
 
-    private void Button_Clicked_1(object sender, EventArgs e)
-    {
+        // Filtra usuarios con rol 'Usuario'
+        private void FiltraUsuario_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.FiltrarUsuarios("Usuario");
+        }
 
+        // Realiza la búsqueda de usuarios
+        private void BuscarUsuario_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.BuscarUsuarios();
+        }
+
+        // Actualiza el usuario actual cuando se selecciona un elemento en el CollectionView
+        private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is acesoModel usuario)
+            {
+                ViewModel.UsuarioActual = usuario;
+            }
+        }
     }
 }

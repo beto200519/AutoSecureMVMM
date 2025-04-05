@@ -10,9 +10,16 @@ public partial class Perfil : ContentPage
         BindingContext = new PerfilMV();
 
     }
-    private async void VolLogClic(object sender, EventArgs e)
+    protected async void VolLogClic(object sender, EventArgs e)
     {
-        // Navegar a la página de Registro
-        await Navigation.PushAsync(new Login());
+      
+
+        bool confirmacion = await DisplayAlert("Cerrar Sesión", "¿Está seguro que desea cerrar sesión?", "Sí", "No");
+
+        if (confirmacion)
+        {
+         
+            await Shell.Current.GoToAsync("//LoginPage");
+        }
     }
 }

@@ -1,180 +1,165 @@
-using MiAppMaui.Services;  // Asegúrate de incluir el espacio de nombres de ApiService
-using System.ComponentModel;
+using System.Text.Json;
 using System.Windows.Input;
-using System.Runtime.CompilerServices;
-using Interfases.Vistas;
 using Interfases.Modelo;
 
 namespace Interfases.VistaModel
 {
-    public class PerfilMV : INotifyPropertyChanged
+    public class PerfilMV : BindableObject
     {
-        private readonly ApiService _apiService;
+        private readonly HttpClient _client;
 
-        // Propiedades para los datos del perfil
-        private string _nombreCompleto;
-        private string _email;
-        private string _tipoPerfil;
-        private string _estadoTexto;
-        private string _foto;
-        private string _fechaFormateada;
-        private string _horarioAcceso;
-        private string _diasAcceso;
-        private string _puertaAcceso;
-        private string _estadoColor;
-
-        // Propiedades para binding a la vista
-        public string NombreCompleto
+        // Propiedades de Usuarios
+        private string _nombre;
+        public string Nombre
         {
-            get => _nombreCompleto;
-            set { _nombreCompleto = value; OnPropertyChanged(); }
+            get => _nombre;
+            set { _nombre = value; OnPropertyChanged(); }
         }
 
-        public string Email
+        private string _correo;
+        public string Correo
         {
-            get => _email;
-            set { _email = value; OnPropertyChanged(); }
+            get => _correo;
+            set { _correo = value; OnPropertyChanged(); }
         }
 
-        public string TipoPerfil
+        private string _rol;
+        public string Rol
         {
-            get => _tipoPerfil;
-            set { _tipoPerfil = value; OnPropertyChanged(); }
+            get => _rol;
+            set { _rol = value; OnPropertyChanged(); }
         }
 
-        public string EstadoTexto
+        private int _pin;
+        public int Pin
         {
-            get => _estadoTexto;
-            set { _estadoTexto = value; OnPropertyChanged(); }
+            get => _pin;
+            set { _pin = value; OnPropertyChanged(); }
         }
 
-        public string Foto
+        private string _ultimoAcceso;
+        public string UltimoAcceso
         {
-            get => _foto;
-            set { _foto = value; OnPropertyChanged(); }
+            get => _ultimoAcceso;
+            set { _ultimoAcceso = value; OnPropertyChanged(); }
         }
 
-        public string FechaFormateada
+        // Propiedades de Permisos
+        private string _puesto;
+        public string Puesto
         {
-            get => _fechaFormateada;
-            set { _fechaFormateada = value; OnPropertyChanged(); }
+            get => _puesto;
+            set { _puesto = value; OnPropertyChanged(); }
         }
 
-        public string HorarioAcceso
+        private string _dias;
+        public string Dias
         {
-            get => _horarioAcceso;
-            set { _horarioAcceso = value; OnPropertyChanged(); }
+            get => _dias;
+            set { _dias = value; OnPropertyChanged(); }
         }
 
-        public string DiasAcceso
+        private string _horas;
+        public string Horas
         {
-            get => _diasAcceso;
-            set { _diasAcceso = value; OnPropertyChanged(); }
+            get => _horas;
+            set { _horas = value; OnPropertyChanged(); }
         }
 
-        public string PuertaAcceso
-        {
-            get => _puertaAcceso;
-            set { _puertaAcceso = value; OnPropertyChanged(); }
-        }
-
-        public string EstadoColor
-        {
-            get => _estadoColor;
-            set { _estadoColor = value; OnPropertyChanged(); }
-        }
-
-        public string MensajeAccion { get; set; }
-
-        // Comando para cerrar sesión
-        public ICommand CerrarSesionCommand { get; }
-
-        // Constructor público sin parámetros
-        public PerfilMV(ApiService apiService)
-        {
-            _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
-
-            // Inicialización de los comandos
-            CerrarSesionCommand = new Command(async () => await CerrarSesion());
-
-            // Obtener los datos del perfil
-            ObtenerPerfil();
-        }
+        // Comando para buscar el usuario
+        public ICommand BuscarUsuarioCommand { get; }
 
         public PerfilMV()
         {
+            _client = new HttpClient();
+            BuscarUsuarioCommand = new Command<string>(async (id) => await CargarUsuario(id));
         }
 
-        // Método para obtener los datos del perfil desde la API
-        private async Task ObtenerPerfil()
-{
-    try
-    {
-        // Asegúrate de especificar el tipo T aquí. Si la respuesta es un objeto perfil, especifica el tipo del perfil.
-        var perfil = await _apiService.GetProfileDataAsync<PerfilModelo>("perfil"); // Cambia Perfil por el tipo correcto
-
-        if (perfil != null)
-        {
-            // Asignar los valores del perfil obtenidos de la API
-            NombreCompleto = perfil.NombreCompleto;
-            Email = perfil.Email;
-            TipoPerfil = perfil.TipoPerfil;
-            EstadoTexto = perfil.EstadoTexto;
-            Foto = perfil.Foto;
-            FechaFormateada = perfil.FechaFormateada;
-            HorarioAcceso = perfil.HorarioAcceso;
-            DiasAcceso = perfil.DiasAcceso;
-            PuertaAcceso = perfil.PuertaAcceso;
-            EstadoColor = perfil.EstadoColor;
-        }
-        else
-        {
-            MensajeAccion = "No se pudo obtener el perfil.";
-        }
-    }
-    catch (Exception ex)
-    {
-        MensajeAccion = $"Error al obtener los datos del perfil: {ex.Message}";
-    }
-}
-
-
-        // Método para cerrar sesión y redirigir
-        private async Task CerrarSesion()
+        private async Task CargarUsuario(string idUsuario)
         {
             try
             {
-                var success = await _apiService.PostDataAsync<object>("logout", null); // Cambia "logout" a tu endpoint correspondiente
-
-                if (success)
+                // Validar que el ID no esté vacío
+                if (string.IsNullOrWhiteSpace(idUsuario))
                 {
-                    MensajeAccion = "Has cerrado sesión correctamente.";
-                    RedirigirAPaginaDeLogin();
+                    await ShowAlert("Error", "Ingrese un ID válido");
+                    return;
+                }
+
+                var url = $"https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Usuario/ActUsu&Perm{idUsuario}";
+                var response = await _client.GetAsync(url);
+
+                // Comprobar si la respuesta es exitosa
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true,
+                        WriteIndented = true
+                    };
+
+                    // Deserializar la respuesta en el modelo de usuario
+                    var usuario = JsonSerializer.Deserialize<PerfilModelo>(jsonResponse, options);
+
+                    if (usuario != null)
+                    {
+                        // Actualizar la UI con los datos obtenidos
+                        UpdateUI(usuario);
+                        await ShowAlert("Éxito", "Datos cargados correctamente", "OK");
+                    }
+                    else
+                    {
+                        await ShowAlert("Error", "Formato de respuesta inválido");
+                    }
                 }
                 else
                 {
-                    MensajeAccion = "Hubo un problema al cerrar sesión.";
+                    // Manejar errores de la API
+                    await HandleApiError(response);
                 }
             }
             catch (Exception ex)
             {
-                MensajeAccion = $"Error en el cierre de sesión: {ex.Message}";
+                // Manejo de excepciones generales
+                await ShowAlert("Error crítico", $"Error: {ex.Message}");
             }
         }
 
-        // Redirige a la página de login
-        private void RedirigirAPaginaDeLogin()
+        private void UpdateUI(PerfilModelo usuario)
         {
-            // Lógica de redirección a la página de login usando navegación
-            // Si estás usando Xamarin.Forms o MAUI, puedes hacer algo como esto:
-            Application.Current.MainPage = new NavigationPage(new Login());
+            // Actualizar las propiedades del ViewModel con los datos del usuario
+            Nombre = usuario.Nombre;
+            Correo = usuario.Correo;
+            Rol = usuario.Rol;
+            Pin = usuario.Pin;
+            UltimoAcceso = usuario.UltimoAcceso;
+            Puesto = usuario.Puesto;
+            Dias = usuario.Dias;
+            Horas = usuario.Horas;
         }
 
-        // Notificación de cambios
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private async Task HandleApiError(HttpResponseMessage response)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            // Obtener detalles del error si la respuesta no es exitosa
+            var errorContent = await response.Content.ReadAsStringAsync();
+            var errorMessage = $"Error: {response.StatusCode}";
+
+            if (!string.IsNullOrEmpty(errorContent))
+            {
+                errorMessage += $"\nDetalles: {errorContent}";
+            }
+
+            await ShowAlert("Error del servidor", errorMessage);
+        }
+
+        private async Task ShowAlert(string title, string message, string cancel = "OK")
+        {
+            // Mostrar un alert en la UI
+            await Application.Current.MainPage.Dispatcher.DispatchAsync(async () =>
+            {
+                await Application.Current.MainPage.DisplayAlert(title, message, cancel);
+            });
         }
     }
 }

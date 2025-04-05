@@ -1,9 +1,10 @@
-﻿
-namespace Interfases.Modelo
+﻿using Newtonsoft.Json;
+
+namespace Interfases.Modelos
 {
-    internal class LoginModelo
+    public class LoginModelo
     {
-        public string Usuario { get; set; }
-        public string Contrasena { get; set; }
+        public string Correo { get; set; }    // Correo electrónico del usuario
+        public string Clave { get; set; }
     }
 }

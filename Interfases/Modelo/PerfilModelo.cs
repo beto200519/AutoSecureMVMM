@@ -2,15 +2,16 @@
 {
     public class PerfilModelo
     {
-        public string NombreCompleto { get; set; }
-        public string Email { get; set; }
-        public string TipoPerfil { get; set; }
-        public string EstadoTexto { get; set; }
-        public string Foto { get; set; }
-        public string FechaFormateada { get; set; }
-        public string HorarioAcceso { get; set; }
-        public string DiasAcceso { get; set; }
-        public string PuertaAcceso { get; set; }
-        public string EstadoColor { get; set; }
+      
+        public string Nombre { get; set; }
+        public string Correo { get; set; }
+        public string Rol { get; set; }
+        public int Pin { get; set; }
+        public string UltimoAcceso { get; set; }
+
+        // Propiedades de Permisos
+        public string Puesto { get; set; }
+        public string Dias { get; set; }
+        public string Horas { get; set; }
     }
 }

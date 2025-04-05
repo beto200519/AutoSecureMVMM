@@ -1,47 +1,56 @@
-﻿using MiAppMaui.Services;
-using Interfases.Modelo;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Interfases.Servicios;
 using System.Threading.Tasks;
 
-namespace Interfases.ViewModel
+namespace Interfases.VistaModel
 {
-    public class LoginVM
+    public partial class LoginVM : ObservableObject
     {
         private readonly ApiService _apiService;
 
-        public string Usuario { get; set; }
-        public string Contrasena { get; set; }
-
-        public LoginVM()
+        public LoginVM(ApiService apiService)
         {
-            _apiService = new ApiService();
+            _apiService = apiService;
         }
 
-        // Método para realizar el login
-        public async Task<bool> LoginAsync()
+        [ObservableProperty]
+        private string correo;
+
+        [ObservableProperty]
+        private string clave;
+
+        [ObservableProperty]
+        private string errorMessage;
+
+        [RelayCommand]
+        public async Task IniciarSesionAsync()
         {
-            if (string.IsNullOrEmpty(Usuario) || string.IsNullOrEmpty(Contrasena))
+            // Validación de los campos de correo y clave
+            if (string.IsNullOrWhiteSpace(Correo))
             {
-                // Mostrar error de campos vacíos
-                return false;
+                ErrorMessage = "Por favor, ingresa tu correo.";
+                return;
             }
 
-            var loginData = new LoginModelo
+            if (string.IsNullOrWhiteSpace(Clave))
             {
-                Usuario = Usuario,
-                Contrasena = Contrasena
-            };
-
-            // Llamar al método de ApiService para hacer el login
-            bool isSuccess = await _apiService.LoginAsync(loginData);
-
-            if (!isSuccess)
-            {
-                // Mostrar error de login fallido
-                return false;
+                ErrorMessage = "Por favor, ingresa tu contraseña.";
+                return;
             }
 
-            // Si el login es exitoso, puedes almacenar un token o realizar alguna acción
-            return true;
+            // Llamada al servicio para verificar el login
+            bool loginExitoso = await _apiService.LoginAsync(Correo, Clave);
+
+            if (loginExitoso)
+            {
+                ErrorMessage = string.Empty;  // Limpiar mensaje de error
+                await Shell.Current.GoToAsync("//AcesoRemoto"); // Navegar a la página principal
+            }
+            else
+            {
+                ErrorMessage = "Correo o contraseña incorrectos.";
+            }
         }
     }
 }

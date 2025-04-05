@@ -1,12 +1,18 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows.Input;
-
+using Newtonsoft.Json;
+using Interfases.Modelo;
 namespace Interfases.VistaModel
 {
     public class AcesoRemotoVM : INotifyPropertyChanged
     {
+        private static readonly HttpClient _httpClient = new HttpClient();
+        private readonly string apiAccesosUrl = "https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Accesos"; // URL para la API de accesos
+        private readonly string apiUsuariosUrl = "https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Usuarios"; // URL para obtener datos del usuario
+
         private bool puertaAbierta;
         private bool seguroActivado;
         private int tiempoRestante;
@@ -16,6 +22,7 @@ namespace Interfases.VistaModel
 
         public ObservableCollection<string> Historial { get; set; } = new ObservableCollection<string>();
 
+        // Propiedades existentes
         public bool PuertaCerrada => !puertaAbierta;
         public bool PuertaAbierta => puertaAbierta;
         public string EstadoPuerta => puertaAbierta ? "Puerta Abierta" : "Puerta Cerrada";
@@ -23,20 +30,20 @@ namespace Interfases.VistaModel
         public bool SeguroActivado => seguroActivado;
         public bool SeguroDesactivado => !seguroActivado;
         public bool MostrarContador => tiempoRestante > 0;
-        public string Contador => $" {tiempoRestante} s";
+        public string Contador => $"{tiempoRestante}s";
 
         public ICommand PuertaTappedCommand { get; }
         public ICommand SeguroTappedCommand { get; }
 
-#pragma warning disable CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
+        // Constructor
         public AcesoRemotoVM()
-#pragma warning restore CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         {
             PuertaTappedCommand = new Command(async () => await OnPuertaTapped());
             SeguroTappedCommand = new Command(OnSeguroTapped);
+
+            _ = CargarHistorial(); // Carga inicial del historial
         }
 
-        [Obsolete]
         private async Task OnPuertaTapped()
         {
             if (seguroActivado)
@@ -50,6 +57,7 @@ namespace Interfases.VistaModel
                 puertaAbierta = true;
                 tiempoRestante = 10;
                 Historial.Add($"Puerta abierta a las {DateTime.Now.ToShortTimeString()}");
+                await RegistrarAccesoAsync("Abierto");
                 StartTimer();
             }
             else
@@ -57,6 +65,7 @@ namespace Interfases.VistaModel
                 puertaAbierta = false;
                 temporizador?.Stop();
                 Historial.Add($"Puerta cerrada manualmente a las {DateTime.Now.ToShortTimeString()}");
+                await RegistrarAccesoAsync("Cerrado");
             }
 
             NotifyPropertyChanged(nameof(PuertaAbierta));
@@ -68,13 +77,101 @@ namespace Interfases.VistaModel
         private void OnSeguroTapped()
         {
             seguroActivado = !seguroActivado;
-            Historial.Add($"{(seguroActivado ? "Seguro activado" : "Seguro desactivado")} {DateTime.Now.ToShortTimeString()}");
+            Historial.Add($"{(seguroActivado ? "Seguro activado" : "Seguro desactivado")} a las {DateTime.Now.ToShortTimeString()}");
             NotifyPropertyChanged(nameof(SeguroActivado));
             NotifyPropertyChanged(nameof(SeguroDesactivado));
             NotifyPropertyChanged(nameof(EstadoSeguro));
         }
 
-        [Obsolete]
+        private async Task CargarHistorial()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync(apiAccesosUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var historialData = JsonConvert.DeserializeObject<ObservableCollection<string>>(json);
+
+                    if (historialData != null)
+                    {
+                        Historial.Clear();
+                        foreach (var registro in historialData)
+                        {
+                            Historial.Add(registro);
+                        }
+                    }
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo cargar el historial desde la base de datos.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Error de conexión: {ex.Message}", "OK");
+            }
+        }
+
+        private async Task RegistrarAccesoAsync(string estado)
+        {
+            try
+            {
+                // Aquí deberías obtener dinámicamente el `Usuario_id` y `Puertas_id` desde la API o el contexto actual
+                var usuarioActual = await ObtenerUsuarioActualAsync();
+                if (usuarioActual == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo obtener el usuario actual.", "OK");
+                    return;
+                }
+
+                var acceso = new
+                {
+                    Usuario_id = usuarioActual.Id, // ID obtenido de la API
+                    Puertas_id = usuarioActual.PuertaId, // Puerta asignada al usuario
+                    Fecha = DateTime.Now,
+                    Metodo = "Manual",
+                    Estado = estado
+                };
+
+                var json = JsonConvert.SerializeObject(acceso);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync(apiAccesosUrl, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo registrar el acceso en la base de datos.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Error al registrar acceso: {ex.Message}", "OK");
+            }
+        }
+
+        private async Task<dynamic> ObtenerUsuarioActualAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{apiUsuariosUrl}/actual"); // Endpoint para obtener datos del usuario actual
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<dynamic>(json); // Deserializa los datos del usuario actual
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private void StartTimer()
         {
             temporizador = new System.Timers.Timer(1000);

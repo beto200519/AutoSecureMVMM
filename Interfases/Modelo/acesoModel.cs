@@ -1,20 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 namespace Interfases.Modelo
 {
     public class acesoModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
+        public string Usuario_id { get; set; }
+        public string Puesto { get; set; }
+        public string Puertas_id { get; set; }
+        public string Dias { get; set; }
+        public string Horas { get; set; } // Almacena el rango de horas en formato "HH:mm-HH:mm"
+
         public string Nombre { get; set; }
         public string Correo { get; set; }
-        public string Password { get; set; }
+        public string Clave { get; set; }
         public string Rol { get; set; }
-        public string ColorRol => Rol == "Administrador" ? "#4169E1" : "#228B22";
-        public TimeSpan HoraPermitida { get; set; }
-        public DateTime DiaPermitido { get; set; }
-        public string PuertaPermitida { get; set; }
-        public bool CuentaHabilitada { get; set; }
+        public int Pin { get; set; }
+        public DateTime UltimoAcceso { get; set; }
+
+        // Propiedades auxiliares para las horas descompuestas
+        public string HoraInicio
+        {
+            get => Horas?.Split('-')?.ElementAtOrDefault(0);
+            set
+            {
+                var partes = Horas?.Split('-') ?? new string[2];
+                Horas = $"{value}-{partes.ElementAtOrDefault(1)}";
+            }
+        }
+
+        public string HoraFin
+        {
+            get => Horas?.Split('-')?.ElementAtOrDefault(1);
+            set
+            {
+                var partes = Horas?.Split('-') ?? new string[2];
+                Horas = $"{partes.ElementAtOrDefault(0)}-{value}";
+            }
+        }
     }
 }

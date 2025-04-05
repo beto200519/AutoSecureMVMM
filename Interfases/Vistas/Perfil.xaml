@@ -2,10 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Interfases.VistaModel"
-             xmlns:local="clr-namespace:Interfases.Vistas"
              x:Class="Interfases.Vistas.Perfil"
-           BackgroundColor="black">
-
+             BackgroundColor="#0C0C0C"
+             Title="Perfil de Usuario">
 
     <ContentPage.BindingContext>
         <vm:PerfilMV />
@@ -13,30 +12,28 @@
 
     <ContentPage.Resources>
         <Style x:Key="PageTitle" TargetType="Label">
-            <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontSize" Value="24" />
             <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="TextColor" Value="#daa520" />
-            <Setter Property="HorizontalOptions" Value="Center" />
-            <Setter Property="Margin" Value="0,0,0,15" />
+            <Setter Property="TextColor" Value="White" />
         </Style>
 
         <Style x:Key="SectionTitle" TargetType="Label">
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="TextColor" Value="#daa520" />
-            <Setter Property="Margin" Value="0,10,0,5" />
+            <Setter Property="Margin" Value="0,0,0,5" />
         </Style>
 
         <Style x:Key="FormLabel" TargetType="Label">
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="#cccccc" />
             <Setter Property="Margin" Value="0,10,0,5" />
             <Setter Property="VerticalOptions" Value="Center" />
         </Style>
 
         <Style x:Key="FormValue" TargetType="Label">
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="TextColor" Value="#cccccc" />
+            <Setter Property="TextColor" Value="White" />
             <Setter Property="Margin" Value="0,10,0,5" />
             <Setter Property="VerticalOptions" Value="Center" />
         </Style>
@@ -65,6 +62,7 @@
             <Setter Property="StrokeThickness" Value="1" />
             <Setter Property="Padding" Value="20" />
             <Setter Property="Margin" Value="0,10,0,10" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 10" />
             <Setter Property="Shadow">
                 <Setter.Value>
                     <Shadow Brush="#daa520" Offset="4,4" Opacity="0.3" Radius="8" />
@@ -92,83 +90,45 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Text="Perfil de Usuario" Style="{StaticResource PageTitle}" />
-
-                <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
-                    <Label Text="{Binding TipoPerfil}" 
-                           TextColor="#daa520" 
-                           FontAttributes="Bold" 
-                           VerticalOptions="Center" 
-                           Margin="0,0,10,0" />
-                    <Border WidthRequest="40" 
-                            HeightRequest="40" 
-                            StrokeShape="RoundRectangle 20" 
-                            Padding="0" 
-                            BackgroundColor="#292929"
-                            Stroke="#daa520" 
-                            StrokeThickness="1" 
-                            Margin="0,0,10,0">
-                        <Image Source="{Binding Foto}" Aspect="AspectFill" />
-                    </Border>
-                </HorizontalStackLayout>
             </Grid>
         </Border>
 
         <!-- Contenido del Perfil -->
         <ScrollView Grid.Row="1">
             <StackLayout Padding="20" Spacing="15">
-                <!-- Información Personal -->
+                <!-- Buscar Usuario -->
                 <Border Style="{StaticResource CardStyle}">
                     <StackLayout>
-                        <!-- Título de sección -->
-                        <Label Text="INFORMACIÓN PERSONAL" Style="{StaticResource SectionTitle}" />
+                        <Label Text="BUSCAR USUARIO POR ID" Style="{StaticResource SectionTitle}" />
+                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
 
-                        <!-- Separador dorado -->
-                        <BoxView HeightRequest="1" 
-                                 BackgroundColor="#daa520" 
-                                 Opacity="0.6"
-                                 Margin="0,0,0,10" />
-
-                        <Grid ColumnSpacing="10" RowSpacing="8">
+                        <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="140" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="0" Text="Nombre Completo:" Style="{StaticResource FormLabel}" />
-                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding NombreCompleto}" Style="{StaticResource FormValue}" />
+                            <Entry x:Name="EntryIdUsuario" Grid.Column="0"
+                                   Placeholder="Ingrese ID del usuario"
+                                   PlaceholderColor="#666666"
+                                   TextColor="White" 
+                                   BackgroundColor="#292929"
+                                   Keyboard="Default" />
 
-                            <Label Grid.Row="1" Grid.Column="0" Text="Email:" Style="{StaticResource FormLabel}" />
-                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Email}" Style="{StaticResource FormValue}" />
-
-                            <Label Grid.Row="2" Grid.Column="0" Text="Tipo de Perfil:" Style="{StaticResource FormLabel}" />
-                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding TipoPerfil}" Style="{StaticResource FormValue}" />
-
-                            <Label Grid.Row="3" Grid.Column="0" Text="Estado:" Style="{StaticResource FormLabel}" />
-                            <HorizontalStackLayout Grid.Row="3" Grid.Column="1" VerticalOptions="Center">
-                                <Label Text="{Binding EstadoTexto}" Style="{StaticResource FormValue}" />
-                                <Ellipse Fill="{Binding EstadoColor}" WidthRequest="12" HeightRequest="12" VerticalOptions="Center" Margin="5,0,0,0" />
-                            </HorizontalStackLayout>
+                            <Button Grid.Column="1"
+                                    Text="Buscar"
+                                    Style="{StaticResource GoldenButton}"
+                                    Command="{Binding BuscarUsuarioCommand}"
+                                    CommandParameter="{Binding Source={x:Reference EntryIdUsuario}, Path=Text}" />
                         </Grid>
                     </StackLayout>
                 </Border>
 
-                <!-- Información Adicional -->
+                <!-- Información Personal -->
                 <Border Style="{StaticResource CardStyle}">
                     <StackLayout>
-                        <!-- Título de sección -->
-                        <Label Text="INFORMACIÓN ADICIONAL" Style="{StaticResource SectionTitle}" />
-
-                        <!-- Separador dorado -->
-                        <BoxView HeightRequest="1" 
-                                 BackgroundColor="#daa520" 
-                                 Opacity="0.6"
-                                 Margin="0,0,0,10" />
+                        <Label Text="INFORMACIÓN PERSONAL" Style="{StaticResource SectionTitle}" />
+                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
 
                         <Grid ColumnSpacing="10" RowSpacing="8">
                             <Grid.ColumnDefinitions>
@@ -180,25 +140,59 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="0" Text="Fecha de Registro:" Style="{StaticResource FormLabel}" />
-                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding FechaFormateada}" Style="{StaticResource FormValue}" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Nombre:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nombre}" Style="{StaticResource FormValue}" />
 
-                            <Label Grid.Row="1" Grid.Column="0" Text="Horario de Acceso:" Style="{StaticResource FormLabel}" />
-                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding HorarioAcceso}" Style="{StaticResource FormValue}" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="Email:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Correo}" Style="{StaticResource FormValue}" />
 
-                            <Label Grid.Row="2" Grid.Column="0" Text="Días de Acceso:" Style="{StaticResource FormLabel}" />
-                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding DiasAcceso}" Style="{StaticResource FormValue}" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="Rol:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Rol}" Style="{StaticResource FormValue}" />
 
-                            <Label Grid.Row="3" Grid.Column="0" Text="Puerta de Acceso:" Style="{StaticResource FormLabel}" />
-                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding PuertaAcceso}" Style="{StaticResource FormValue}" />
+                            <Label Grid.Row="3" Grid.Column="0" Text="PIN:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Pin}" Style="{StaticResource FormValue}" />
+
+                            <Label Grid.Row="4" Grid.Column="0" Text="Último Acceso:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="4" Grid.Column="1" Text="{Binding UltimoAcceso}" Style="{StaticResource FormValue}" />
+
+                        </Grid>
+                    </StackLayout>
+                </Border>
+
+                <!-- Información de Permisos -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackLayout>
+                        <Label Text="INFORMACIÓN DE ACCESOS" Style="{StaticResource SectionTitle}" />
+                        <BoxView HeightRequest="1" BackgroundColor="#daa520" Opacity="0.6" Margin="0,0,0,10" />
+
+                        <Grid ColumnSpacing="10" RowSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="Puesto:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Puesto}" Style="{StaticResource FormValue}" />
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Días de Acceso:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Dias}" Style="{StaticResource FormValue}" />
+
+                            <Label Grid.Row="2" Grid.Column="0" Text="Horario:" Style="{StaticResource FormLabel}" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Horas}" Style="{StaticResource FormValue}" />
                         </Grid>
                     </StackLayout>
                 </Border>
 
                 <!-- Footer con información -->
-                <Border BackgroundColor="#292929" Padding="15" StrokeThickness="0">
+                <Border BackgroundColor="#292929" Padding="15" StrokeThickness="0" StrokeShape="RoundRectangle 10">
                     <StackLayout HorizontalOptions="Center">
                         <Label Text="Panel de Usuario v1.0" 
                                TextColor="#999999" 
@@ -219,13 +213,12 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
             <Button Grid.Column="1" 
                     Text="CERRAR SESIÓN" 
-                    Command="{Binding CerrarSesionCommand}" 
+                    x:Name="CerrarSesionBtn"
                     Style="{StaticResource DangerButton}" 
-                    Margin="5,0,0,0" 
-                    Clicked="VolLogClic"/>
+                    Margin="5,0,0,0"
+                    Clicked="VolLogClic" />
         </Grid>
     </Grid>
 </ContentPage>

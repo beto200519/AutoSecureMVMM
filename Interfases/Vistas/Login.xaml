@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interfases.Vistas.Login"
+             xmlns:vm="clr-namespace:Interfases.VistaModel"
+             x:DataType="vm:LoginVM"
              Background="Black">
 
     <ContentPage.Resources>
@@ -84,9 +85,10 @@
                                    VerticalOptions="Center"
                                    Margin="10,0" />
                             <Entry Grid.Column="1"
-                                   Placeholder="Nombre de Usuario"
-                                   Style="{StaticResource EntryField}"
-                                   BackgroundColor="Transparent" />
+                             Placeholder="Correo Electrónico"  
+                                Style="{StaticResource EntryField}"
+                                Text="{Binding Correo}"
+                                 BackgroundColor="Transparent" />
                         </Grid>
                     </Frame>
 
@@ -107,6 +109,7 @@
                                    Placeholder="Contraseña"
                                    IsPassword="True"
                                    Style="{StaticResource EntryField}"
+                                   Text="{Binding Clave}"
                                    BackgroundColor="Transparent" />
                             <Button Grid.Column="2"
                                     Text="&#xf06e;"
@@ -119,29 +122,19 @@
                         </Grid>
                     </Frame>
 
-                    <!-- Recordar usuario y olvidó contraseña -->
-                    <Grid ColumnDefinitions="*,*">
-                        <CheckBox Color="#daa520" Margin="30,0,0,0"/>
-                        <Label Grid.Column="0" 
-                               Text="Recordar" 
-                               TextColor="White"
-                               VerticalOptions="Center"
-                               Margin="0" />
-                        <Button Grid.Column="1" 
-                               Text="Contactanos" 
-                               TextColor="#daa520"
-                               VerticalOptions="Center"
-                               HorizontalOptions="End"
-                                Background="Transparent"
-                              Command="{Binding ContactUsCommand}"/>
-                    </Grid>
+                    <!-- Mensaje de error -->
+                    <Label Text="{Binding ErrorMessage}" 
+                           TextColor="Red" 
+                           FontSize="14" 
+                           HorizontalOptions="Center" 
+                           Margin="0,10" />
 
                     <!-- Botón de Iniciar Sesión -->
                     <Button Text="INICIAR SESIÓN"
                             Style="{StaticResource GoldenButton}"
                             HeightRequest="50"
-                            Command="{Binding LoginCommand}" 
-                            Clicked="EntrarClic"/>
+                            Command="{Binding IniciarSesionAsync}" />
+                    <!-- Aquí se enlaza el comando correctamente -->
 
                     <!-- Línea divisoria -->
                     <Grid ColumnDefinitions="*,Auto,*" Margin="0,10">
@@ -158,18 +151,6 @@
                                  BackgroundColor="#444444"
                                  VerticalOptions="Center" />
                     </Grid>
-
-                    <!-- Registro -->
-                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                        <Label Text="¿No tienes una cuenta?" 
-                               TextColor="White" />
-                        <Button Text="Registrarse" 
-                               TextColor="#daa520"
-                               FontAttributes="None"
-                                Clicked="Registrarclic"
-                                Background="Transparent"
-                                Margin="-10"/>
-                    </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Border>
         </Grid>
