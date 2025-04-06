@@ -1,17 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Interfases.Servicios;
+using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Interfases.VistaModel
 {
     public partial class LoginVM : ObservableObject
     {
-        private readonly ApiService _apiService;
+        private readonly AuthService _authService;
 
-        public LoginVM(ApiService apiService)
+        public LoginVM(AuthService authService)
         {
-            _apiService = apiService;
+            _authService = authService;
         }
 
         [ObservableProperty]
@@ -26,31 +28,59 @@ namespace Interfases.VistaModel
         [RelayCommand]
         public async Task IniciarSesionAsync()
         {
-            // Validación de los campos de correo y clave
-            if (string.IsNullOrWhiteSpace(Correo))
+            try
             {
-                ErrorMessage = "Por favor, ingresa tu correo.";
-                return;
-            }
+                // Validar campos vacíos
+                if (string.IsNullOrWhiteSpace(Correo))
+                {
+                    ErrorMessage = "El campo de correo electrónico está vacío.";
+                    return;
+                }
 
-            if (string.IsNullOrWhiteSpace(Clave))
-            {
-                ErrorMessage = "Por favor, ingresa tu contraseña.";
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(Clave))
+                {
+                    ErrorMessage = "El campo de contraseña está vacío.";
+                    return;
+                }
 
-            // Llamada al servicio para verificar el login
-            bool loginExitoso = await _apiService.LoginAsync(Correo, Clave);
+                // Validar formato de correo
+                if (!Correo.Contains("@") || !Correo.Contains("."))
+                {
+                    ErrorMessage = "El formato del correo electrónico no es válido.";
+                    return;
+                }
 
-            if (loginExitoso)
-            {
-                ErrorMessage = string.Empty;  // Limpiar mensaje de error
-                await Shell.Current.GoToAsync("//AcesoRemoto"); // Navegar a la página principal
+                // Intentar iniciar sesión
+                bool loginExitoso = await _authService.LoginAsync(Correo, Clave);
+
+                if (loginExitoso)
+                {
+                    ErrorMessage = string.Empty; // Limpiar errores previos
+
+                    // Validar si el token se guardó correctamente
+                    var tokenGuardado = await SecureStorage.GetAsync("auth_token");
+
+                    if (string.IsNullOrEmpty(tokenGuardado))
+                    {
+                        ErrorMessage = "Error: no se pudo guardar o recuperar el token de acceso.";
+                        return;
+                    }
+
+                    // Redirigir al usuario
+                    await Shell.Current.GoToAsync("//AcesoRemoto");
+                }
+                else
+                {
+                    ErrorMessage = "Inicio de sesión fallido. Verifica tus credenciales.";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ErrorMessage = "Correo o contraseña incorrectos.";
+                // Aquí puedes capturar más excepciones si es necesario
+                ErrorMessage = $"Error: {ex.Message}";
             }
         }
+
     }
+
 }

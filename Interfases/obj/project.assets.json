@@ -445,6 +445,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -2843,6 +2856,19 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -5245,6 +5271,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -7643,6 +7682,19 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -10045,6 +10097,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -12445,6 +12510,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/MKFilePicker.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -14818,6 +14896,15 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -15264,6 +15351,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -15714,6 +15810,15 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -16160,6 +16265,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -16610,6 +16724,15 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -17056,6 +17179,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -17506,6 +17638,15 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -17952,6 +18093,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -18402,6 +18552,15 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -18848,6 +19007,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -19298,6 +19466,15 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -19744,6 +19921,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -20404,6 +20590,15 @@
           }
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -21018,6 +21213,15 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -21636,6 +21840,15 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -22252,6 +22465,15 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -22866,6 +23088,15 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -23491,6 +23722,15 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "MKFilePicker/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/MKFilePicker.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -25491,6 +25731,24 @@
         "tools/net6.0/System.Text.Json.dll",
         "tools/x64/GenXbf.dll",
         "tools/x86/GenXbf.dll"
+      ]
+    },
+    "MKFilePicker/1.0.3": {
+      "sha512": "bCdzqELC2jcDCgmUhhS+ex4+5O3SBLeGvoR502L1UXfiMjxpkpmv965bEOF0dHTsE2wFI7HThTvXu4fF1h5dIQ==",
+      "type": "package",
+      "path": "mkfilepicker/1.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net7.0-android33.0/MKFilePicker.aar",
+        "lib/net7.0-android33.0/MKFilePicker.dll",
+        "lib/net7.0-android33.0/MKFilePicker.xml",
+        "lib/net7.0-ios16.1/MKFilePicker.dll",
+        "lib/net7.0-maccatalyst16.1/MKFilePicker.dll",
+        "lib/net7.0-windows10.0.19041/MKFilePicker.dll",
+        "mkfilepicker.1.0.3.nupkg.sha512",
+        "mkfilepicker.nuspec"
       ]
     },
     "Newtonsoft.Json/13.0.3": {
@@ -27508,6 +27766,7 @@
   "projectFileDependencyGroups": {
     "net9.0-android35.0": [
       "CommunityToolkit.Mvvm >= 8.4.0",
+      "MKFilePicker >= 1.0.3",
       "Microsoft.Extensions.Logging.Debug >= 9.0.0",
       "Microsoft.Maui.Controls >= 9.0.0",
       "Microsoft.Maui.Essentials >= 9.0.50",
@@ -27517,6 +27776,7 @@
     ],
     "net9.0-ios18.0": [
       "CommunityToolkit.Mvvm >= 8.4.0",
+      "MKFilePicker >= 1.0.3",
       "Microsoft.Extensions.Logging.Debug >= 9.0.0",
       "Microsoft.Maui.Controls >= 9.0.0",
       "Microsoft.Maui.Essentials >= 9.0.50",
@@ -27526,6 +27786,7 @@
     ],
     "net9.0-maccatalyst18.0": [
       "CommunityToolkit.Mvvm >= 8.4.0",
+      "MKFilePicker >= 1.0.3",
       "Microsoft.Extensions.Logging.Debug >= 9.0.0",
       "Microsoft.Maui.Controls >= 9.0.0",
       "Microsoft.Maui.Essentials >= 9.0.50",
@@ -27535,6 +27796,7 @@
     ],
     "net9.0-windows10.0.19041": [
       "CommunityToolkit.Mvvm >= 8.4.0",
+      "MKFilePicker >= 1.0.3",
       "Microsoft.Extensions.Logging.Debug >= 9.0.0",
       "Microsoft.Maui.Controls >= 9.0.0",
       "Microsoft.Maui.Essentials >= 9.0.50",
@@ -27549,11 +27811,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\Interfases.csproj",
+      "projectUniqueName": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Interfases.csproj",
       "projectName": "Interfases",
-      "projectPath": "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\Interfases.csproj",
+      "projectPath": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Interfases.csproj",
       "packagesPath": "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\obj\\",
+      "outputPath": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
@@ -27613,6 +27875,10 @@
             "target": "Package",
             "version": "[8.4.0, )"
           },
+          "MKFilePicker": {
+            "target": "Package",
+            "version": "[1.0.3, )"
+          },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "[9.0.0, )"
@@ -27667,6 +27933,10 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.4.0, )"
+          },
+          "MKFilePicker": {
+            "target": "Package",
+            "version": "[1.0.3, )"
           },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
@@ -27723,6 +27993,10 @@
             "target": "Package",
             "version": "[8.4.0, )"
           },
+          "MKFilePicker": {
+            "target": "Package",
+            "version": "[1.0.3, )"
+          },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "[9.0.0, )"
@@ -27778,6 +28052,10 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.4.0, )"
+          },
+          "MKFilePicker": {
+            "target": "Package",
+            "version": "[1.0.3, )"
           },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",

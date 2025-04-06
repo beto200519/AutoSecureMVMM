@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\Interfases.csproj": {}
+    "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Interfases.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\Interfases.csproj": {
+    "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Interfases.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\Interfases.csproj",
+        "projectUniqueName": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Interfases.csproj",
         "projectName": "Interfases",
-        "projectPath": "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\Interfases.csproj",
+        "projectPath": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Interfases.csproj",
         "packagesPath": "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\obj\\",
+        "outputPath": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
@@ -71,6 +71,10 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "MKFilePicker": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -125,6 +129,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "MKFilePicker": {
+              "target": "Package",
+              "version": "[1.0.3, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -181,6 +189,10 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "MKFilePicker": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -236,6 +248,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "MKFilePicker": {
+              "target": "Package",
+              "version": "[1.0.3, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",

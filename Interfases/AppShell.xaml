@@ -13,7 +13,7 @@
         Route="MainPage" />
 
     <FlyoutItem Title="Perfil">
-        <ShellContent Title="Notificaciones" ContentTemplate="{DataTemplate Vistas:Perfil}" />
+        <ShellContent Title="Perfil" ContentTemplate="{DataTemplate Vistas:Perfil}" />
     </FlyoutItem>
     <FlyoutItem Title="Notificaciones">
         <ShellContent Title="Notificaciones" ContentTemplate="{DataTemplate Vistas:Notificaciones}" />

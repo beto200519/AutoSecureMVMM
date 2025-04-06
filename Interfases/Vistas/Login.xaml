@@ -5,6 +5,7 @@
              x:DataType="vm:LoginVM"
              Background="Black">
 
+
     <ContentPage.Resources>
         <Style x:Key="GoldenButton" TargetType="Button">
             <Setter Property="BackgroundColor" Value="#daa520" />
@@ -71,27 +72,26 @@
                            HorizontalOptions="Center"
                            Margin="0,0,0,10" />
 
-                    <!-- Campo de Usuario -->
+                    <!-- Campo de Correo -->
                     <Frame BackgroundColor="#1A1A1A" 
                            BorderColor="#333333" 
                            Padding="5,0" 
                            CornerRadius="8"
                            HasShadow="False">
                         <Grid ColumnDefinitions="Auto,*">
-                            <Label 
-                                   FontFamily="FontAwesome"
+                            <Label FontFamily="FontAwesome"
                                    TextColor="#daa520"
                                    FontSize="18"
                                    VerticalOptions="Center"
                                    Margin="10,0" />
                             <Entry Grid.Column="1"
-                             Placeholder="Correo Electrónico"  
-                                Style="{StaticResource EntryField}"
-                                Text="{Binding Correo}"
-                                 BackgroundColor="Transparent" />
+                                   Placeholder="Correo Electrónico"  
+                                   Style="{StaticResource EntryField}"
+                                   Text="{Binding Correo}"
+                                   BackgroundColor="Transparent" />
                         </Grid>
                     </Frame>
-
+                    <Label Text="{Binding ErrorMessage}" TextColor="Red" FontAttributes="Bold" />
                     <!-- Campo de Contraseña -->
                     <Frame BackgroundColor="#1A1A1A" 
                            BorderColor="#333333" 
@@ -99,8 +99,7 @@
                            CornerRadius="8"
                            HasShadow="False">
                         <Grid ColumnDefinitions="Auto,*,Auto">
-                            <Label 
-                                   FontFamily="FontAwesome"
+                            <Label FontFamily="FontAwesome"
                                    TextColor="#daa520"
                                    FontSize="18"
                                    VerticalOptions="Center"
@@ -134,7 +133,6 @@
                             Style="{StaticResource GoldenButton}"
                             HeightRequest="50"
                             Command="{Binding IniciarSesionAsync}" />
-                    <!-- Aquí se enlaza el comando correctamente -->
 
                     <!-- Línea divisoria -->
                     <Grid ColumnDefinitions="*,Auto,*" Margin="0,10">

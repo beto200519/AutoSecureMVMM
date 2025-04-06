@@ -107,19 +107,6 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-
-                            <Entry x:Name="EntryIdUsuario" Grid.Column="0"
-                                   Placeholder="Ingrese ID del usuario"
-                                   PlaceholderColor="#666666"
-                                   TextColor="White" 
-                                   BackgroundColor="#292929"
-                                   Keyboard="Default" />
-
-                            <Button Grid.Column="1"
-                                    Text="Buscar"
-                                    Style="{StaticResource GoldenButton}"
-                                    Command="{Binding BuscarUsuarioCommand}"
-                                    CommandParameter="{Binding Source={x:Reference EntryIdUsuario}, Path=Text}" />
                         </Grid>
                     </StackLayout>
                 </Border>

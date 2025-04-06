@@ -619,6 +619,9 @@ microsoft.maui.devices.sensors.OrientationSensorListener;crc64f62664462a8937a9.O
 Microsoft.Maui.Graphics.Platform.PlatformGraphicsView, Microsoft.Maui.Graphics;crc643f2b18b2570eaa5a.PlatformGraphicsView
 Microsoft.Maui.Graphics.Platform.PlatformGraphicsView;crc643f2b18b2570eaa5a.PlatformGraphicsView
 microsoft.maui.graphics.platform.PlatformGraphicsView;crc643f2b18b2570eaa5a.PlatformGraphicsView
+MKFilePicker.PickFileActivity, MKFilePicker;crc643c1eaceff0639747.PickFileActivity
+MKFilePicker.PickFileActivity;crc643c1eaceff0639747.PickFileActivity
+mkfilepicker.PickFileActivity;crc643c1eaceff0639747.PickFileActivity
 Bumptech.Glide.Glide+IRequestOptionsFactory, Xamarin.Android.Glide;com.bumptech.glide.Glide$RequestOptionsFactory
 Bumptech.Glide.Glide.IRequestOptionsFactory;com.bumptech.glide.Glide$RequestOptionsFactory
 com.bumptech.glide.Glide$RequestOptionsFactory;com.bumptech.glide.Glide$RequestOptionsFactory

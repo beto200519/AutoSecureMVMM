@@ -1,6 +1,13 @@
+using System;
+using System.Net.Http;
 using System.Text.Json;
-using System.Windows.Input;
+using System.Threading.Tasks;
 using Interfases.Modelo;
+using Microsoft.Maui.Storage;
+using Microsoft.Maui.Controls;
+using System.Windows.Input;
+using Interfases.Servicios;
+using Interfases.Vistas;
 
 namespace Interfases.VistaModel
 {
@@ -68,13 +75,16 @@ namespace Interfases.VistaModel
 
         // Comando para buscar el usuario
         public ICommand BuscarUsuarioCommand { get; }
+        public ICommand CerrarSesionCommand { get; }
 
         public PerfilMV()
         {
             _client = new HttpClient();
             BuscarUsuarioCommand = new Command<string>(async (id) => await CargarUsuario(id));
+            CerrarSesionCommand = new Command(CerrarSesion);
         }
 
+        // Método para cargar el perfil de usuario
         private async Task CargarUsuario(string idUsuario)
         {
             try
@@ -86,20 +96,24 @@ namespace Interfases.VistaModel
                     return;
                 }
 
-                var url = $"https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Usuario/ActUsu&Perm{idUsuario}";
-                var response = await _client.GetAsync(url);
+                var token = await AuthService.GetTokenAsync();
+                if (string.IsNullOrEmpty(token))
+                {
+                    await ShowAlert("Error", "No se encontró un token de sesión.");
+                    return;
+                }
 
-                // Comprobar si la respuesta es exitosa
+                var url = $"https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Usuario/ActUsu&Perm{idUsuario}";
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _client.SendAsync(request);
+
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true,
-                        WriteIndented = true
-                    };
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-                    // Deserializar la respuesta en el modelo de usuario
                     var usuario = JsonSerializer.Deserialize<PerfilModelo>(jsonResponse, options);
 
                     if (usuario != null)
@@ -115,20 +129,18 @@ namespace Interfases.VistaModel
                 }
                 else
                 {
-                    // Manejar errores de la API
                     await HandleApiError(response);
                 }
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones generales
                 await ShowAlert("Error crítico", $"Error: {ex.Message}");
             }
         }
 
+        // Método para actualizar los datos del perfil en la UI
         private void UpdateUI(PerfilModelo usuario)
         {
-            // Actualizar las propiedades del ViewModel con los datos del usuario
             Nombre = usuario.Nombre;
             Correo = usuario.Correo;
             Rol = usuario.Rol;
@@ -139,9 +151,9 @@ namespace Interfases.VistaModel
             Horas = usuario.Horas;
         }
 
+        // Manejo de errores de la API
         private async Task HandleApiError(HttpResponseMessage response)
         {
-            // Obtener detalles del error si la respuesta no es exitosa
             var errorContent = await response.Content.ReadAsStringAsync();
             var errorMessage = $"Error: {response.StatusCode}";
 
@@ -153,13 +165,20 @@ namespace Interfases.VistaModel
             await ShowAlert("Error del servidor", errorMessage);
         }
 
+        // Mostrar alertas en la UI
         private async Task ShowAlert(string title, string message, string cancel = "OK")
         {
-            // Mostrar un alert en la UI
             await Application.Current.MainPage.Dispatcher.DispatchAsync(async () =>
             {
                 await Application.Current.MainPage.DisplayAlert(title, message, cancel);
             });
+        }
+
+        // Cerrar sesión
+        private void CerrarSesion()
+        {
+            AuthService.RemoveToken(); // Eliminar el token
+            Application.Current.MainPage = new Login();  // Redirigir a la página de login
         }
     }
 }

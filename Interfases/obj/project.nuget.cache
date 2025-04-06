@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KH0ZTGCuSow=",
+  "dgSpecHash": "hhFvJGT6rlk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Norberto Carrillo\\Source\\Repos\\Interfaces\\Interfases\\Interfases.csproj",
+  "projectFilePath": "C:\\Users\\Norberto Carrillo\\source\\repos\\Interfaces\\Interfases\\Interfases.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\googlegson\\2.11.0.5\\googlegson.2.11.0.5.nupkg.sha512",
@@ -30,6 +30,7 @@
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\microsoft.web.webview2\\1.0.2792.45\\microsoft.web.webview2.1.0.2792.45.nupkg.sha512",
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\microsoft.windowsappsdk\\1.6.240923002\\microsoft.windowsappsdk.1.6.240923002.nupkg.sha512",
+    "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\mkfilepicker\\1.0.3\\mkfilepicker.1.0.3.nupkg.sha512",
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\refit\\8.0.0\\refit.8.0.0.nupkg.sha512",
     "C:\\Users\\Norberto Carrillo\\.nuget\\packages\\xamarin.android.glide\\4.16.0.6\\xamarin.android.glide.4.16.0.6.nupkg.sha512",

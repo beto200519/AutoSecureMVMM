@@ -5,6 +5,8 @@ using System.Text;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using Interfases.Modelo;
+using System.Net.Http.Headers;
+
 namespace Interfases.VistaModel
 {
     public class AcesoRemotoVM : INotifyPropertyChanged
@@ -17,6 +19,8 @@ namespace Interfases.VistaModel
         private bool seguroActivado;
         private int tiempoRestante;
         private System.Timers.Timer temporizador;
+
+        private string authToken; // Para almacenar el token de autenticación
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -42,6 +46,40 @@ namespace Interfases.VistaModel
             SeguroTappedCommand = new Command(OnSeguroTapped);
 
             _ = CargarHistorial(); // Carga inicial del historial
+        }
+
+        // Método para autenticar al usuario y obtener el token
+        public async Task LoginAsync(string username, string password)
+        {
+            try
+            {
+                var loginRequest = new
+                {
+                    Username = username,
+                    Password = password
+                };
+
+                var json = JsonConvert.SerializeObject(loginRequest);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("https://tu-api.com/api/Login", content); // Cambia esta URL por la correcta
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseJson = await response.Content.ReadAsStringAsync();
+                    var loginResponse = JsonConvert.DeserializeObject<dynamic>(responseJson);
+                    authToken = loginResponse.token; // Suponiendo que el token está en el campo 'token'
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo autenticar el usuario.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Error al hacer login: {ex.Message}", "OK");
+            }
         }
 
         private async Task OnPuertaTapped()
