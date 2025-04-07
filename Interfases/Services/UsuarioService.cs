@@ -14,7 +14,7 @@ namespace Interfases.Servicios
     {
         private readonly HttpClient _httpClient;
         // Ajusta la URL base a la de tu API de usuarios
-        private const string BaseUrl = "https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Usuario";
+        private const string BaseUrl = "https://ml1ctcld-7149.usw3.devtunnels.ms/api/Usuario";
 
         public UsuarioService(string token)
         {

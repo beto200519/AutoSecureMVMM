@@ -13,7 +13,7 @@ namespace Interfases.Servicios
     public class AuthService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://qmw9l8hh-5192.usw3.devtunnels.ms/api/auth";
+        private const string BaseUrl = "https://ml1ctcld-7149.usw3.devtunnels.ms/api/auth";
 
         public AuthService()
         {
@@ -29,31 +29,48 @@ namespace Interfases.Servicios
             };
 
             var json = JsonSerializer.Serialize(loginData);
+            Console.WriteLine($"Enviando JSON: {json}");
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             try
             {
+                //var response = await _httpClient.PostAsync($"{BaseUrl}", content);
                 var response = await _httpClient.PostAsync($"{BaseUrl}/login", content);
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine("Respuesta cruda del servidor:");
+                Console.WriteLine(responseBody);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseBody = await response.Content.ReadAsStringAsync();
-                    var loginRespuesta = JsonSerializer.Deserialize<TokenRessponse>(responseBody,
-                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    if (loginRespuesta != null && !string.IsNullOrEmpty(loginRespuesta.Token))
+                    try
                     {
-                        await SecureStorage.SetAsync("jwt_token", loginRespuesta.Token);
-                        return true;
+                        var loginRespuesta = JsonSerializer.Deserialize<TokenRessponse>(responseBody,
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                        if (loginRespuesta != null && !string.IsNullOrEmpty(loginRespuesta.Token))
+                        {
+                            await SecureStorage.SetAsync("jwt_token", loginRespuesta.Token);
+                            return true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo deserializar correctamente el token.");
+                        }
                     }
-                    return false; // Token no recibido o inválido
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al deserializar: {ex.Message}");
+                    }
+
+                    return false;
                 }
                 else
                 {
-                    // Respuesta de error del servidor
-                    Console.WriteLine($"Error: {response.StatusCode}");
+                    Console.WriteLine($"Error del servidor: {response.StatusCode}");
                     return false;
                 }
+
             }
             catch (HttpRequestException ex)
             {

@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Interfases")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+94dbc03461c736c7bf2b1616c14b5891d654961d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+ba86895edd4f7b0d28f39113b24bd7b63db23384")]
 [assembly: System.Reflection.AssemblyProductAttribute("Interfases")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Interfases")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
-[assembly: System.Runtime.Versioning.TargetPlatformAttribute("iOS18.0")]
+[assembly: System.Runtime.Versioning.TargetPlatformAttribute("iOS18.2")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("iOS15.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

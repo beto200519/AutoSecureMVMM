@@ -9,14 +9,7 @@ namespace Interfases.Vistas
         public Login()
         {
             InitializeComponent();
-            BindingContext = new LoginVM(new AuthService());  // Asignar LoginVM directamente si no se pasa ViewModel
-        }
-
-        // Constructor con ViewModel como parámetro
-        public Login(LoginVM viewModel)
-        {
-            InitializeComponent();
-            BindingContext = viewModel;  // Asignar correctamente el ViewModel que se pasa al constructor
+            BindingContext = new LoginVM(new AuthService(), Navigation);  // Asignar LoginVM directamente si no se pasa ViewModel
         }
     }
 }

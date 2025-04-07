@@ -6,6 +6,7 @@ anim/nav_modal_default_enter_anim.xml;anim/nav_modal_default_enter_anim.xml
 anim/nav_modal_default_exit_anim.xml;anim/nav_modal_default_exit_anim.xml
 drawable/maui_splash.xml;drawable/maui_splash.xml
 drawable/maui_splash_image.xml;drawable/maui_splash_image.xml
+values-v35/styles.xml;values-v35/styles.xml
 values/attr.xml;values/attr.xml
 values/colors.xml;values/colors.xml
 values/styles.xml;values/styles.xml
@@ -20,6 +21,7 @@ anim/nav_modal_default_enter_anim.xml;anim/nav_modal_default_enter_anim.xml
 anim/nav_modal_default_exit_anim.xml;anim/nav_modal_default_exit_anim.xml
 drawable/maui_splash.xml;drawable/maui_splash.xml
 drawable/maui_splash_image.xml;drawable/maui_splash_image.xml
+values-v35/styles.xml;values-v35/styles.xml
 values/attr.xml;values/attr.xml
 values/colors.xml;values/colors.xml
 values/styles.xml;values/styles.xml
