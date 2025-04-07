@@ -91,7 +91,9 @@ namespace Interfases.VistaModel
                     // Puedes guardar info adicional aquí si quieres
                     // Ej: await SecureStorage.SetAsync("usuario_nombre", usuarioActual.Nombre);
 
-                    await _navigation.PushAsync(new AppShell());
+                    //await _navigation.PushAsync(new AppShell());
+                    _navigation.InsertPageBefore(new AppShell(), _navigation.NavigationStack.Last());
+                    _navigation.PopAsync();
                 }
                 else
                 {
