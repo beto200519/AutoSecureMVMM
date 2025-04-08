@@ -103,7 +103,7 @@ namespace Interfases.VistaModel
                     return;
                 }
 
-                var url = $"https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Usuario/ActUsu&Perm{idUsuario}";
+                var url = $"https://ml1ctcld-7149.usw3.devtunnels.ms/api/Usuario/Get{idUsuario}";
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 

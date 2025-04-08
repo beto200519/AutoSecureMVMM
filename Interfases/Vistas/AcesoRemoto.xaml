@@ -192,17 +192,9 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border Style="{StaticResource HistoryItem}">
-                                    <Grid ColumnDefinitions="Auto, *" ColumnSpacing="10">
-                                        <Ellipse Grid.Column="0" 
-                                               Fill="#daa520" 
-                                               WidthRequest="10" 
-                                               HeightRequest="10"
-                                               VerticalOptions="Center"
-                                               HorizontalOptions="Center"/>
-
-                                        <Label Grid.Column="1" 
-                                             Text="{Binding}" 
-                                             Style="{StaticResource HistoryText}"/>
+                                    <Grid ColumnDefinitions="Auto, *">
+                                        <Ellipse Grid.Column="0" Fill="#daa520" WidthRequest="10" HeightRequest="10" VerticalOptions="Center"/>
+                                        <Label Grid.Column="1" Text="{Binding FormattedText}" Style="{StaticResource HistoryText}"/>
                                     </Grid>
                                 </Border>
                             </DataTemplate>

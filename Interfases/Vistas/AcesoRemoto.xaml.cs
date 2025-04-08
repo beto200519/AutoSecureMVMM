@@ -1,3 +1,5 @@
+using Interfases.VistaModel;
+
 namespace Interfases.Vistas;
 
 public partial class AcesoRemoto : ContentPage
@@ -5,7 +7,7 @@ public partial class AcesoRemoto : ContentPage
 	public AcesoRemoto()
 	{
 		InitializeComponent();
-        BindingContext = new Interfases.VistaModel.AcesoRemotoVM(); // Asegura que la ViewModel está enlazada
+        BindingContext = new AccesoRemotoVM(); // Asegura que la ViewModel está enlazada
     }
 
     private async void OnBackButtonClicked(object sender, EventArgs e)

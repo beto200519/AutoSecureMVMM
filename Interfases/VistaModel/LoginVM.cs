@@ -63,6 +63,8 @@ namespace Interfases.VistaModel
 
                     var token = await SecureStorage.GetAsync("jwt_token");
 
+                    Preferences.Set("user_email", Correo);
+
                     if (string.IsNullOrEmpty(token))
                     {
                         ErrorMessage = "Error: no se pudo guardar o recuperar el token de acceso.";
@@ -93,7 +95,7 @@ namespace Interfases.VistaModel
 
                     //await _navigation.PushAsync(new AppShell());
                     _navigation.InsertPageBefore(new AppShell(), _navigation.NavigationStack.Last());
-                    _navigation.PopAsync();
+                    await _navigation.PopAsync();
                 }
                 else
                 {

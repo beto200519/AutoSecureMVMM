@@ -1,242 +1,253 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Windows.Input;
-using Newtonsoft.Json;
-using Interfases.Modelo;
-using System.Net.Http.Headers;
+﻿
+//using CommunityToolkit.Mvvm.ComponentModel;
+//using CommunityToolkit.Mvvm.Input;
+//using Interfases.Modelo;
+//using Interfases.Modelos;
+//using Interfases.Services;
+//using Newtonsoft.Json;
+//using System;
+//using System.Collections.ObjectModel;
+//using System.Linq;
+//using System.Net.Http;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Timers;
 
-namespace Interfases.VistaModel
-{
-    public class AcesoRemotoVM : INotifyPropertyChanged
-    {
-        private static readonly HttpClient _httpClient = new HttpClient();
-        private readonly string apiAccesosUrl = "https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Accesos"; // URL para la API de accesos
-        private readonly string apiUsuariosUrl = "https://qmw9l8hh-5192.usw3.devtunnels.ms/api/Usuarios"; // URL para obtener datos del usuario
+//namespace Interfases.VistaModel
+//{
+//    public partial class AccesoRemotoVM : ObservableObject
+//    {
+//        private readonly HttpClientService _httpClientService;
+//        private readonly string _apiAccesosUrl = "https://ml1ctcld-7149.usw3.devtunnels.ms/api/Accesos";
+//        private readonly string _apiUsuariosUrl = "https://ml1ctcld-7149.usw3.devtunnels.ms/api/Usuario";
+//        private readonly string _apiCircuitoUrl = "https://ml1ctcld-7149.usw3.devtunnels.ms/api/Circuito/GetById/67ed8c3d1f95e236d4cff150";
 
-        private bool puertaAbierta;
-        private bool seguroActivado;
-        private int tiempoRestante;
-        private System.Timers.Timer temporizador;
+//        private bool _puertaAbierta;
+//        private bool _seguroActivado;
+//        private int _tiempoRestante;
+//        private System.Timers.Timer _temporizador;
+//        private string _correoUsuario; // Correo del usuario autenticado
 
-        private string authToken; // Para almacenar el token de autenticación
+//        public ObservableCollection<acesoModel> Historial { get; set; } = new ObservableCollection<acesoModel>();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+//        public bool PuertaCerrada => !_puertaAbierta;
+//        public bool PuertaAbierta => _puertaAbierta;
+//        public string EstadoPuerta => _puertaAbierta ? "Puerta Abierta" : "Puerta Cerrada";
+//        public string EstadoSeguro => _seguroActivado ? "Seguro Activado" : "Seguro Desactivado";
+//        public bool SeguroActivado => _seguroActivado;
+//        public bool SeguroDesactivado => !_seguroActivado;
+//        public bool MostrarContador => _tiempoRestante > 0;
+//        public string Contador => $"{_tiempoRestante}s";
 
-        public ObservableCollection<string> Historial { get; set; } = new ObservableCollection<string>();
+//        //public AccesoRemotoVM()
+//        //{
+//        //    _httpClientService = new HttpClientService();
+//        //    _correoUsuario = Preferences.Get("user_email", null); // Suponiendo que guardaste el correo en el login
+//        //    PuertaTappedCommand = new RelayCommand(async () => await OnPuertaTappedAsync());
+//        //    SeguroTappedCommand = new RelayCommand(OnSeguroTapped);
+//        //    _ = CargarHistorialAsync();
+//        //}
 
-        // Propiedades existentes
-        public bool PuertaCerrada => !puertaAbierta;
-        public bool PuertaAbierta => puertaAbierta;
-        public string EstadoPuerta => puertaAbierta ? "Puerta Abierta" : "Puerta Cerrada";
-        public string EstadoSeguro => seguroActivado ? "Seguro Activado" : "Seguro Desactivado";
-        public bool SeguroActivado => seguroActivado;
-        public bool SeguroDesactivado => !seguroActivado;
-        public bool MostrarContador => tiempoRestante > 0;
-        public string Contador => $"{tiempoRestante}s";
+//        [RelayCommand]
+//        private async Task OnPuertaTappedAsync()
+//        {
+//            if (_seguroActivado)
+//            {
+//                await Application.Current.MainPage.DisplayAlert("Acceso Denegado", "La puerta tiene el seguro activado.", "OK");
+//                return;
+//            }
 
-        public ICommand PuertaTappedCommand { get; }
-        public ICommand SeguroTappedCommand { get; }
+//            HttpClient client = await _httpClientService.GetAuthenticatedClientAsync();
 
-        // Constructor
-        public AcesoRemotoVM()
-        {
-            PuertaTappedCommand = new Command(async () => await OnPuertaTapped());
-            SeguroTappedCommand = new Command(OnSeguroTapped);
+//            if (!_puertaAbierta)
+//            {
+//                _puertaAbierta = true;
+//                _tiempoRestante = 10;
+//                Historial.Insert(0, new acesoModel { Fecha = DateTime.Now, Metodo = "Manual", Estado = true, NombreUsuario = await GetUsuarioNombreAsync() });
+//                await AbrirCircuitoAsync(client);
+//                await RegistrarAccesoAsync(client, "Abierto");
+//                StartTimer();
+//            }
+//            else
+//            {
+//                _puertaAbierta = false;
+//                _temporizador?.Stop();
+//                Historial.Insert(0, new acesoModel { Fecha = DateTime.Now, Metodo = "Manual", Estado = false, NombreUsuario = await GetUsuarioNombreAsync() });
+//                await CerrarCircuitoAsync(client);
+//                await RegistrarAccesoAsync(client, "Cerrado");
+//            }
+//        }
 
-            _ = CargarHistorial(); // Carga inicial del historial
-        }
+//        [RelayCommand]
+//        private async Task OnSeguroTappedAsync()
+//        {
+//            _seguroActivado = !_seguroActivado;
+//            Historial.Insert(0, new acesoModel
+//            {
+//                Fecha = DateTime.Now,
+//                Metodo = "Manual",
+//                Estado = _seguroActivado,
+//                NombreUsuario = await GetUsuarioNombreAsync()
+//            });
+//        }
 
-        // Método para autenticar al usuario y obtener el token
-        public async Task LoginAsync(string username, string password)
-        {
-            try
-            {
-                var loginRequest = new
-                {
-                    Username = username,
-                    Password = password
-                };
+//        private async Task CargarHistorialAsync()
+//        {
+//            try
+//            {
+//                HttpClient client = await _httpClientService.GetAuthenticatedClientAsync();
+//                var response = await client.GetAsync(_apiAccesosUrl);
+//                if (response.IsSuccessStatusCode)
+//                {
+//                    var json = await response.Content.ReadAsStringAsync();
+//                    var historialData = JsonConvert.DeserializeObject<ObservableCollection<acesoModel>>(json);
+//                    if (historialData != null)
+//                    {
+//                        Historial.Clear();
+//                        foreach (var registro in historialData)
+//                        {
+//                            registro.NombreUsuario = await GetUsuarioNombreAsync(registro.UsuarioId);
+//                            Historial.Add(registro);
+//                        }
+//                    }
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                await Application.Current.MainPage.DisplayAlert("Error", $"Error al cargar historial: {ex.Message}", "OK");
+//            }
+//        }
 
-                var json = JsonConvert.SerializeObject(loginRequest);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+//        private async Task RegistrarAccesoAsync(HttpClient client, string estado)
+//        {
+//            try
+//            {
+//                var usuario = await ObtenerUsuarioActualAsync(client);
+//                if (usuario == null) return;
 
-                var response = await _httpClient.PostAsync("https://tu-api.com/api/Login", content); // Cambia esta URL por la correcta
+//                var acceso = new acesoModel
+//                {
+//                    UsuarioId = usuario.Id,
+//                    PuertasId = "puerta_default", // Ajusta según tu lógica
+//                    PermisosId = "permiso_default", // Ajusta según tu lógica
+//                    Fecha = DateTime.UtcNow,
+//                    Metodo = "Manual",
+//                    Estado = estado == "Abierto"
+//                };
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseJson = await response.Content.ReadAsStringAsync();
-                    var loginResponse = JsonConvert.DeserializeObject<dynamic>(responseJson);
-                    authToken = loginResponse.token; // Suponiendo que el token está en el campo 'token'
-                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo autenticar el usuario.", "OK");
-                }
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Error al hacer login: {ex.Message}", "OK");
-            }
-        }
+//                var json = JsonConvert.SerializeObject(acceso);
+//                var content = new StringContent(json, Encoding.UTF8, "application/json");
+//                var response = await client.PostAsync(_apiAccesosUrl, content);
 
-        private async Task OnPuertaTapped()
-        {
-            if (seguroActivado)
-            {
-                await Application.Current.MainPage.DisplayAlert("Acceso Denegado", "La puerta tiene el seguro activado.", "OK");
-                return;
-            }
+//                if (!response.IsSuccessStatusCode)
+//                {
+//                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo registrar el acceso.", "OK");
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                await Application.Current.MainPage.DisplayAlert("Error", $"Error al registrar acceso: {ex.Message}", "OK");
+//            }
+//        }
 
-            if (!puertaAbierta)
-            {
-                puertaAbierta = true;
-                tiempoRestante = 10;
-                Historial.Add($"Puerta abierta a las {DateTime.Now.ToShortTimeString()}");
-                await RegistrarAccesoAsync("Abierto");
-                StartTimer();
-            }
-            else
-            {
-                puertaAbierta = false;
-                temporizador?.Stop();
-                Historial.Add($"Puerta cerrada manualmente a las {DateTime.Now.ToShortTimeString()}");
-                await RegistrarAccesoAsync("Cerrado");
-            }
+//        private async Task<usuarioModelo> ObtenerUsuarioActualAsync(HttpClient client)
+//        {
+//            try
+//            {
+//                var response = await client.GetAsync(_apiUsuariosUrl);
+//                if (response.IsSuccessStatusCode)
+//                {
+//                    var json = await response.Content.ReadAsStringAsync();
+//                    var usuarios = JsonConvert.DeserializeObject<usuarioModelo[]>(json);
+//                    return usuarios.FirstOrDefault(u => u.Correo == _correoUsuario);
+//                }
+//                return null;
+//            }
+//            catch
+//            {
+//                return null;
+//            }
+//        }
 
-            NotifyPropertyChanged(nameof(PuertaAbierta));
-            NotifyPropertyChanged(nameof(PuertaCerrada));
-            NotifyPropertyChanged(nameof(EstadoPuerta));
-            NotifyPropertyChanged(nameof(MostrarContador));
-        }
+//        private async Task<string> GetUsuarioNombreAsync(string usuarioId = null)
+//        {
+//            var usuario = await ObtenerUsuarioActualAsync(await _httpClientService.GetAuthenticatedClientAsync());
+//            return usuario?.Nombre ?? "Usuario desconocido";
+//        }
 
-        private void OnSeguroTapped()
-        {
-            seguroActivado = !seguroActivado;
-            Historial.Add($"{(seguroActivado ? "Seguro activado" : "Seguro desactivado")} a las {DateTime.Now.ToShortTimeString()}");
-            NotifyPropertyChanged(nameof(SeguroActivado));
-            NotifyPropertyChanged(nameof(SeguroDesactivado));
-            NotifyPropertyChanged(nameof(EstadoSeguro));
-        }
+//        private async Task AbrirCircuitoAsync(HttpClient client)
+//        {
+//            try
+//            {
+//                var circuito = new CircuitoModelo
+//                {
+//                    Id = "67ed8c3d1f95e236d4cff150",
+//                    PermisoId = "a",
+//                    Estado = true,
+//                    Fecha = DateTime.UtcNow
+//                };
 
-        private async Task CargarHistorial()
-        {
-            try
-            {
-                var response = await _httpClient.GetAsync(apiAccesosUrl);
+//                var json = JsonConvert.SerializeObject(circuito);
+//                var content = new StringContent(json, Encoding.UTF8, "application/json");
+//                var response = await client.PutAsync(_apiCircuitoUrl, content);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var historialData = JsonConvert.DeserializeObject<ObservableCollection<string>>(json);
+//                if (!response.IsSuccessStatusCode)
+//                {
+//                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo abrir el circuito.", "OK");
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                await Application.Current.MainPage.DisplayAlert("Error", $"Error al abrir circuito: {ex.Message}", "OK");
+//            }
+//        }
 
-                    if (historialData != null)
-                    {
-                        Historial.Clear();
-                        foreach (var registro in historialData)
-                        {
-                            Historial.Add(registro);
-                        }
-                    }
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo cargar el historial desde la base de datos.", "OK");
-                }
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Error de conexión: {ex.Message}", "OK");
-            }
-        }
+//        private async Task CerrarCircuitoAsync(HttpClient client)
+//        {
+//            try
+//            {
+//                var circuito = new CircuitoModelo
+//                {
+//                    Id = "67ed8c3d1f95e236d4cff150",
+//                    PermisoId = "a",
+//                    Estado = false,
+//                    Fecha = DateTime.UtcNow
+//                };
 
-        private async Task RegistrarAccesoAsync(string estado)
-        {
-            try
-            {
-                // Aquí deberías obtener dinámicamente el `Usuario_id` y `Puertas_id` desde la API o el contexto actual
-                var usuarioActual = await ObtenerUsuarioActualAsync();
-                if (usuarioActual == null)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo obtener el usuario actual.", "OK");
-                    return;
-                }
+//                var json = JsonConvert.SerializeObject(circuito);
+//                var content = new StringContent(json, Encoding.UTF8, "application/json");
+//                var response = await client.PutAsync(_apiCircuitoUrl, content);
 
-                var acceso = new
-                {
-                    Usuario_id = usuarioActual.Id, // ID obtenido de la API
-                    Puertas_id = usuarioActual.PuertaId, // Puerta asignada al usuario
-                    Fecha = DateTime.Now,
-                    Metodo = "Manual",
-                    Estado = estado
-                };
+//                if (!response.IsSuccessStatusCode)
+//                {
+//                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo cerrar el circuito.", "OK");
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                await Application.Current.MainPage.DisplayAlert("Error", $"Error al cerrar circuito: {ex.Message}", "OK");
+//            }
+//        }
 
-                var json = JsonConvert.SerializeObject(acceso);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await _httpClient.PostAsync(apiAccesosUrl, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo registrar el acceso en la base de datos.", "OK");
-                }
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Error al registrar acceso: {ex.Message}", "OK");
-            }
-        }
-
-        private async Task<dynamic> ObtenerUsuarioActualAsync()
-        {
-            try
-            {
-                var response = await _httpClient.GetAsync($"{apiUsuariosUrl}/actual"); // Endpoint para obtener datos del usuario actual
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<dynamic>(json); // Deserializa los datos del usuario actual
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private void StartTimer()
-        {
-            temporizador = new System.Timers.Timer(1000);
-            temporizador.Elapsed += (s, e) =>
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    tiempoRestante--;
-                    NotifyPropertyChanged(nameof(Contador));
-
-                    if (tiempoRestante == 0)
-                    {
-                        puertaAbierta = false;
-                        NotifyPropertyChanged(nameof(PuertaAbierta));
-                        NotifyPropertyChanged(nameof(PuertaCerrada));
-                        NotifyPropertyChanged(nameof(EstadoPuerta));
-                        NotifyPropertyChanged(nameof(MostrarContador));
-                        temporizador.Stop();
-                    }
-                });
-            };
-            temporizador.Start();
-        }
-
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-}
+//        private void StartTimer()
+//        {
+//            _temporizador = new System.Timers.Timer(1000); // Intervalo de 1000ms (1 segundo)
+//            _temporizador.Elapsed += (sender, e) =>
+//            {
+//                Device.BeginInvokeOnMainThread(() =>
+//                {
+//                    _tiempoRestante--;
+//                    if (_tiempoRestante == 0)
+//                    {
+//                        _puertaAbierta = false;
+//                        _temporizador.Stop();
+//                        _temporizador.Dispose(); // Liberar recursos del temporizador
+//                        _ = CerrarCircuitoAsync(_httpClientService.GetAuthenticatedClientAsync().Result);
+//                        _ = RegistrarAccesoAsync(_httpClientService.GetAuthenticatedClientAsync().Result, "Cerrado");
+//                    }
+//                });
+//            };
+//            _temporizador.Start();
+//        }
+//    }
+//}

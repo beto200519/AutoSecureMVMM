@@ -5,7 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Interfases"
     xmlns:Vistas="clr-namespace:Interfases.Vistas"
-    Shell.FlyoutBehavior="Flyout">
+    NavigationPage.HasNavigationBar="False"
+    Shell.FlyoutBehavior="Flyout"
+    Padding="-40,0,0,0">
 
     <ShellContent
         Title="Menú"
@@ -15,14 +17,10 @@
     <FlyoutItem Title="Perfil">
         <ShellContent Title="Perfil" ContentTemplate="{DataTemplate Vistas:Perfil}" />
     </FlyoutItem>
-    <FlyoutItem Title="Notificaciones">
+    <!--<FlyoutItem Title="Notificaciones">
         <ShellContent Title="Notificaciones" ContentTemplate="{DataTemplate Vistas:Notificaciones}" />
-    </FlyoutItem>
+    </FlyoutItem>-->
     <FlyoutItem Title="Pedir permisos">
         <ShellContent Title="Pedir permisos" ContentTemplate="{DataTemplate Vistas:Permisos}" />
     </FlyoutItem>
-    <FlyoutItem Title="Solicitudes">
-        <ShellContent Title="Solicitudes" ContentTemplate="{DataTemplate Vistas:Acesos}" />
-    </FlyoutItem>
-    
 </Shell>

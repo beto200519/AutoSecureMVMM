@@ -60,12 +60,6 @@ build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.AcesoRem
 build_metadata.AdditionalFiles.TargetPath = Vistas\AcesoRemoto.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\AcesoRemoto.xaml
 
-[C:/Users/TNC/Desktop/Nueva carpeta/ControlAccesoMaui/Interfases/Vistas/Acesos.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Acesos.xaml
-build_metadata.AdditionalFiles.TargetPath = Vistas\Acesos.xaml
-build_metadata.AdditionalFiles.RelativePath = Vistas\Acesos.xaml
-
 [C:/Users/TNC/Desktop/Nueva carpeta/ControlAccesoMaui/Interfases/Vistas/Login.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Login.xaml
