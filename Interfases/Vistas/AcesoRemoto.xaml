@@ -80,7 +80,13 @@
                         <Shadow Brush="#daa520" Offset="4,4" Opacity="0.3" Radius="8" />
                     </Border.Shadow>
                     <Grid ColumnDefinitions="*, Auto">
-
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label Text="Abrir Puerta" 
+                            Style="{StaticResource StatusLabel}"/>
+                            <Label Text="Sistema de seguridad" 
+                            Style="{StaticResource SubStatusLabel}"
+                                    />
+                            </VerticalStackLayout>
                         <Frame Grid.Column="1" 
                                BorderColor="#daa520" 
                                BackgroundColor="#292929"
@@ -88,13 +94,14 @@
                                Padding="0" 
                                HeightRequest="70" 
                                WidthRequest="70">
+                            
                             <Grid>
-                                <Image Source="apagado.png" 
+                                <Image Source="encendido.png" 
                                        HeightRequest="40" 
                                        WidthRequest="40"
-                                       IsVisible="{Binding PuertaCerrada}">
+                                       IsVisible="{Binding PuertaAbierta}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnPuertaTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding SeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Image Source="encendido.png" 
@@ -102,7 +109,7 @@
                                        WidthRequest="40"
                                        IsVisible="{Binding PuertaAbierta}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnPuertaTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding DSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>
@@ -117,7 +124,7 @@
                     </Border.Shadow>
                     <Grid ColumnDefinitions="*, Auto">
                         <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                            <Label Text="{Binding EstadoSeguro}" 
+                            <Label Text="Cerrar Puerta" 
                                    Style="{StaticResource StatusLabel}"/>
                             <Label Text="Sistema de seguridad" 
                                    Style="{StaticResource SubStatusLabel}"/>
@@ -131,20 +138,20 @@
                                HeightRequest="70" 
                                WidthRequest="70">
                             <Grid>
-                                <Image Source="candadodos.png" 
+                                <Image Source="apagado.png" 
                                        HeightRequest="40" 
                                        WidthRequest="40"
                                        IsVisible="{Binding SeguroDesactivado}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnSeguroTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding DSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Source="candado.png" 
+                                <Image Source="apagado.png" 
                                        HeightRequest="40" 
                                        WidthRequest="40"
                                        IsVisible="{Binding SeguroActivado}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnSeguroTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding DSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>

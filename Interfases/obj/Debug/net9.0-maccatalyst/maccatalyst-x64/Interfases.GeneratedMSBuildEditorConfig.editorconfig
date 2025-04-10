@@ -18,85 +18,85 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Interfases
-build_property.ProjectDir = C:\Users\Norberto Carrillo\AutoSecureMVMM\Interfases\
+build_property.ProjectDir = C:\Users\TNC\Desktop\AutoSecure\Interfases\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/App.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/AppShell.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/MainPage.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Resources/Styles/Colors.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Resources/Styles/Styles.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/AcesoRemoto.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/AcesoRemoto.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.AcesoRemoto.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\AcesoRemoto.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\AcesoRemoto.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/Acesos.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/Acesos.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Acesos.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Acesos.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\Acesos.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/Login.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/Login.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Login.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Login.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\Login.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/Menu.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/Menu.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Menu.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Menu.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\Menu.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/Notificaciones.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/Notificaciones.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Notificaciones.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Notificaciones.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\Notificaciones.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/Perfil.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/Perfil.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Perfil.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Perfil.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\Perfil.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/Permisos.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/Permisos.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Permisos.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Permisos.xaml
 build_metadata.AdditionalFiles.RelativePath = Vistas\Permisos.xaml
 
-[C:/Users/Norberto Carrillo/AutoSecureMVMM/Interfases/Vistas/Registro.xaml]
+[C:/Users/TNC/Desktop/AutoSecure/Interfases/Vistas/Registro.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Interfases.Vistas.Registro.xaml
 build_metadata.AdditionalFiles.TargetPath = Vistas\Registro.xaml

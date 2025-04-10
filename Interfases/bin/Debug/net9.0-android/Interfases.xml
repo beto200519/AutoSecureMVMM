@@ -6,26 +6,15 @@
     <members>
         <member name="T:Interfases.VistaModel.AccesoRemotoVM">
             <inheritdoc/>
-            <inheritdoc/>
-            <inheritdoc/>
         </member>
-        <member name="P:Interfases.VistaModel.AccesoRemotoVM.PuertaAbierta">
-            <inheritdoc cref="F:Interfases.VistaModel.AccesoRemotoVM._puertaAbierta"/>
+        <member name="P:Interfases.VistaModel.AccesoRemotoVM.EstadoSeguro">
+            <inheritdoc cref="F:Interfases.VistaModel.AccesoRemotoVM._estadoSeguro"/>
         </member>
         <member name="P:Interfases.VistaModel.AccesoRemotoVM.SeguroActivado">
             <inheritdoc cref="F:Interfases.VistaModel.AccesoRemotoVM._seguroActivado"/>
         </member>
-        <member name="F:Interfases.VistaModel.AccesoRemotoVM.puertaTappedCommand">
-            <summary>The backing field for <see cref="P:Interfases.VistaModel.AccesoRemotoVM.PuertaTappedCommand"/>.</summary>
-        </member>
-        <member name="P:Interfases.VistaModel.AccesoRemotoVM.PuertaTappedCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Interfases.VistaModel.AccesoRemotoVM.OnPuertaTapped"/>.</summary>
-        </member>
-        <member name="F:Interfases.VistaModel.AccesoRemotoVM.seguroTappedCommand">
-            <summary>The backing field for <see cref="P:Interfases.VistaModel.AccesoRemotoVM.SeguroTappedCommand"/>.</summary>
-        </member>
-        <member name="P:Interfases.VistaModel.AccesoRemotoVM.SeguroTappedCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Interfases.VistaModel.AccesoRemotoVM.OnSeguroTapped"/>.</summary>
+        <member name="P:Interfases.VistaModel.AccesoRemotoVM.SeguroDesactivado">
+            <inheritdoc cref="F:Interfases.VistaModel.AccesoRemotoVM._seguroDesactivado"/>
         </member>
         <member name="T:Interfases.VistaModel.LoginVM">
             <inheritdoc/>
@@ -58,11 +47,14 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PuertaAbierta">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PuertaAbierta" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EstadoSeguro">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EstadoSeguro" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SeguroActivado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SeguroActivado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SeguroDesactivado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SeguroDesactivado" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Correo">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Correo" generated properties.</summary>
@@ -79,11 +71,14 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PuertaAbierta">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PuertaAbierta" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EstadoSeguro">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EstadoSeguro" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SeguroActivado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SeguroActivado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SeguroDesactivado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SeguroDesactivado" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Correo">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Correo" generated properties.</summary>

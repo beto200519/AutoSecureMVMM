@@ -147,7 +147,7 @@
                                 <Border Grid.Column="2" BackgroundColor="#2e86de" Padding="8,3" Margin="5,0" StrokeShape="RoundRectangle 5,5,5,5">
                                     <Label Text="{Binding Estado}" TextColor="White" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" />
                                 </Border>
-                                <Button Grid.Column="3" Text="Editar" 
+                                <Button Grid.Column="3" Text="Ver" 
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AcesoMV}}, Path=EditarUsuarioCommand}" 
                                             CommandParameter="{Binding .}" 
                                             Style="{StaticResource ActionButton}" />
@@ -166,8 +166,8 @@
                         <Grid RowDefinitions="Auto, Auto">
                             <Label Grid.Row="0" Text="GESTIÓN DE USUARIO" FontSize="18" FontAttributes="Bold" TextColor="#daa520" HorizontalOptions="Start" />
                             <StackLayout Grid.Row="1" Orientation="Horizontal">
-                                <Label Text="{Binding UsuarioActual.Nombre}" TextColor="White" FontSize="16" FontAttributes="Bold" />
-                                <Label Text="{Binding UsuarioActual.Id, StringFormat='(ID: {0})'}" Style="{StaticResource SmallIdLabel}" Margin="5,0,0,0" />
+                                <Label Text="{Binding UsuarioActual.Nombre}" TextColor="White" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="{Binding UsuarioActual.Id, StringFormat='(ID: {0})'}" Style="{StaticResource SmallIdLabel}" Margin="5,0,0,0"/>
                             </StackLayout>
                         </Grid>
 
@@ -179,19 +179,19 @@
                             <!-- Nombre -->
                             <Label Grid.Row="0" Grid.Column="0" Text="Nombre completo:" Style="{StaticResource FormLabel}" />
                             <Border Grid.Row="0" Grid.Column="1" StrokeThickness="1" Stroke="#daa520" BackgroundColor="#292929" Padding="2" Margin="10,0,0,0">
-                                <Entry Placeholder="Ingrese nombre completo" Text="{Binding UsuarioActual.Nombre}" Style="{StaticResource StyledEntry}" />
+                                <Entry Placeholder="Ingrese nombre completo" Text="{Binding UsuarioActual.Nombre}" Style="{StaticResource StyledEntry}" IsEnabled="False"/>
                             </Border>
 
                             <!-- Correo -->
                             <Label Grid.Row="1" Grid.Column="0" Text="Correo Electrónico:" Style="{StaticResource FormLabel}" />
                             <Border Grid.Row="1" Grid.Column="1" StrokeThickness="1" Stroke="#daa520" BackgroundColor="#292929" Padding="2" Margin="10,0,0,0">
-                                <Entry Placeholder="ejemplo@correo.com" Text="{Binding UsuarioActual.Correo}" Style="{StaticResource StyledEntry}" />
+                                <Entry Placeholder="ejemplo@correo.com" Text="{Binding UsuarioActual.Correo}" Style="{StaticResource StyledEntry}" IsEnabled="False"/>
                             </Border>
 
                             <!-- Contraseña -->
                             <Label Grid.Row="2" Grid.Column="0" Text="Contraseña:" Style="{StaticResource FormLabel}" />
                             <Border Grid.Row="2" Grid.Column="1" StrokeThickness="1" Stroke="#daa520" BackgroundColor="#292929" Padding="2" Margin="10,0,0,0">
-                                <Entry Placeholder="Ingrese contraseña" Text="{Binding UsuarioActual.Clave}" IsPassword="True" Style="{StaticResource StyledEntry}" />
+                                <Entry Placeholder="Ingrese contraseña" Text="{Binding UsuarioActual.Clave}" IsPassword="True" Style="{StaticResource StyledEntry}" IsEnabled="False"/>
                             </Border>
 
                             <!-- Rol -->
@@ -208,11 +208,11 @@
                             <!-- PIN de acceso -->
                             <Label Grid.Row="4" Grid.Column="0" Text="PIN de acceso:" Style="{StaticResource FormLabel}" />
                             <Border Grid.Row="4" Grid.Column="1" StrokeThickness="1" Stroke="#daa520" BackgroundColor="#292929" Padding="2" Margin="10,0,0,0">
-                                <Entry Placeholder="Ingrese PIN numérico" Text="{Binding UsuarioActual.Pin}" Keyboard="Numeric" MaxLength="4" Style="{StaticResource StyledEntry}" />
+                                <Entry Placeholder="Ingrese PIN numérico" Text="{Binding UsuarioActual.Pin}" Keyboard="Numeric" MaxLength="4" Style="{StaticResource StyledEntry}" IsEnabled="False"/>
                             </Border>
 
                             <!-- Horario de permisos -->
-                            <Label Grid.Row="5" Grid.Column="0" Text="Horario:" Style="{StaticResource FormLabel}" />
+                            <!--<Label Grid.Row="5" Grid.Column="0" Text="Horario:" Style="{StaticResource FormLabel}" />
                             <Grid Grid.Row="5" Grid.Column="1" ColumnDefinitions="Auto, *, Auto, *" Margin="10,0,0,0">
                                 <Label Grid.Column="0" Text="Desde:" Style="{StaticResource TimeLabel}" />
                                 <Border Grid.Column="1" StrokeThickness="1" Stroke="#daa520" BackgroundColor="#292929" Padding="2" Margin="5,0,10,0">
@@ -224,20 +224,20 @@
                                     <TimePicker Time="{Binding HoraFin, Converter={StaticResource StringToTimeConverter}}" 
                                                 TextColor="White" BackgroundColor="#292929" Format="HH:mm" />
                                 </Border>
-                            </Grid>
+                            </Grid>-->
                         </Grid>
 
-                        <!-- Notificación de acción -->
+                        <!-- Notificación de acción --><!--
                         <Label Text="{Binding MensajeAccion}" TextColor="#daa520" FontSize="14" HorizontalOptions="Center"
                                IsVisible="{Binding MensajeAccion, Converter={StaticResource StringNotEmptyConverter}}" Margin="0,5" />
 
-                        <!-- Botones de acción -->
+                        --><!-- Botones de acción --><!--
                         <Grid ColumnDefinitions="*, *, *" ColumnSpacing="10" Margin="0,15,0,0">
                             <Button Grid.Column="0" Text="CREAR USUARIO" Command="{Binding CrearUsuarioCommand}" Style="{StaticResource GoldenButton}" />
                             <Button Grid.Column="1" Text="GUARDAR" Command="{Binding GuardarUsuarioCommand}" Style="{StaticResource GoldenButton}" />
                             <Button Grid.Column="2" Text="ELIMINAR" Command="{Binding EliminarUsuarioCommand}" BackgroundColor="#800000" 
                                     TextColor="White" Style="{StaticResource GoldenButton}" />
-                        </Grid>
+                        </Grid>-->
                     </StackLayout>
                 </Border>
 

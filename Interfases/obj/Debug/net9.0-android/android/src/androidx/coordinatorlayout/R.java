@@ -16,7 +16,7 @@ public final class R {
 		public static final int layout_dodgeInsetEdges = 0x7f0302b6;
 		public static final int layout_insetEdge = 0x7f0302c0;
 		public static final int layout_keyline = 0x7f0302c1;
-		public static final int statusBarBackground = 0x7f03041e;
+		public static final int statusBarBackground = 0x7f03041f;
 	}
 	public static final class id {
 		public static final int bottom = 0x7f080061;
@@ -28,10 +28,10 @@ public final class R {
 		public static final int top = 0x7f0801ea;
 	}
 	public static final class style {
-		public static final int Widget_Support_CoordinatorLayout = 0x7f100467;
+		public static final int Widget_Support_CoordinatorLayout = 0x7f100468;
 	}
 	public static final class styleable {
-		public static final int[] CoordinatorLayout = new int[] { 0x7f030276, 0x7f03041e };
+		public static final int[] CoordinatorLayout = new int[] { 0x7f030276, 0x7f03041f };
 		public static final int CoordinatorLayout_keylines = 0;
 		public static final int CoordinatorLayout_statusBarBackground = 1;
 		public static final int[] CoordinatorLayout_Layout = new int[] { 0x010100b3, 0x7f030283, 0x7f030284, 0x7f030285, 0x7f0302b6, 0x7f0302c0, 0x7f0302c1 };
