@@ -67,8 +67,8 @@
                 <Shadow Brush="#daa520" Offset="0,3" Opacity="0.4" Radius="5" />
             </Border.Shadow>
             <Label Text="CONTROL DE ACCESO REMOTO" 
-                  Style="{StaticResource PageTitle}"
-                  HorizontalOptions="Center" />
+                   Style="{StaticResource PageTitle}"
+                   HorizontalOptions="Center" />
         </Border>
 
         <ScrollView Grid.Row="1">
@@ -80,38 +80,29 @@
                         <Shadow Brush="#daa520" Offset="4,4" Opacity="0.3" Radius="8" />
                     </Border.Shadow>
                     <Grid ColumnDefinitions="*, Auto">
-                        <!-- Información de estado -->
-                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                            <Label Text="{Binding EstadoPuerta}" 
-                                Style="{StaticResource StatusLabel}"/>
-                            <Label Text="{Binding Contador}" 
-                                Style="{StaticResource SubStatusLabel}"
-                                IsVisible="{Binding MostrarContador}" />
-                        </VerticalStackLayout>
 
-                        <!-- Botón de control -->
                         <Frame Grid.Column="1" 
-                             BorderColor="#daa520" 
-                             BackgroundColor="#292929"
-                             CornerRadius="10"
-                             Padding="0" 
-                             HeightRequest="70" 
-                             WidthRequest="70">
+                               BorderColor="#daa520" 
+                               BackgroundColor="#292929"
+                               CornerRadius="10"
+                               Padding="0" 
+                               HeightRequest="70" 
+                               WidthRequest="70">
                             <Grid>
                                 <Image Source="apagado.png" 
-                                    HeightRequest="40" 
-                                    WidthRequest="40"
-                                    IsVisible="{Binding PuertaCerrada}">
+                                       HeightRequest="40" 
+                                       WidthRequest="40"
+                                       IsVisible="{Binding PuertaCerrada}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding PuertaTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding OnPuertaTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Image Source="encendido.png" 
-                                    HeightRequest="40" 
-                                    WidthRequest="40"
-                                    IsVisible="{Binding PuertaAbierta}">
+                                       HeightRequest="40" 
+                                       WidthRequest="40"
+                                       IsVisible="{Binding PuertaAbierta}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding PuertaTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding OnPuertaTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>
@@ -125,81 +116,40 @@
                         <Shadow Brush="#daa520" Offset="4,4" Opacity="0.3" Radius="8" />
                     </Border.Shadow>
                     <Grid ColumnDefinitions="*, Auto">
-                        <!-- Información de estado -->
                         <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
                             <Label Text="{Binding EstadoSeguro}" 
-                                Style="{StaticResource StatusLabel}"/>
+                                   Style="{StaticResource StatusLabel}"/>
                             <Label Text="Sistema de seguridad" 
-                                Style="{StaticResource SubStatusLabel}"/>
+                                   Style="{StaticResource SubStatusLabel}"/>
                         </VerticalStackLayout>
 
-                        <!-- Botón de control -->
                         <Frame Grid.Column="1" 
-                             BorderColor="#daa520" 
-                             BackgroundColor="#292929"
-                             CornerRadius="10"
-                             Padding="0" 
-                             HeightRequest="70" 
-                             WidthRequest="70">
+                               BorderColor="#daa520" 
+                               BackgroundColor="#292929"
+                               CornerRadius="10"
+                               Padding="0" 
+                               HeightRequest="70" 
+                               WidthRequest="70">
                             <Grid>
                                 <Image Source="candadodos.png" 
-                                    HeightRequest="40" 
-                                    WidthRequest="40"
-                                    IsVisible="{Binding SeguroDesactivado}">
+                                       HeightRequest="40" 
+                                       WidthRequest="40"
+                                       IsVisible="{Binding SeguroDesactivado}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SeguroTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding OnSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Image Source="candado.png" 
-                                    HeightRequest="40" 
-                                    WidthRequest="40"
-                                    IsVisible="{Binding SeguroActivado}">
+                                       HeightRequest="40" 
+                                       WidthRequest="40"
+                                       IsVisible="{Binding SeguroActivado}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SeguroTappedCommand}" />
+                                        <TapGestureRecognizer Command="{Binding OnSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>
                         </Frame>
                     </Grid>
-                </Border>
-
-                <!-- Sección de Historial -->
-                <Label Text="Historial de Actividad" 
-                      Style="{StaticResource HistoryTitle}"
-                      HorizontalOptions="Center"/>
-
-                <Border StrokeThickness="2" 
-                      Stroke="#daa520" 
-                      BackgroundColor="#1A1A1A"
-                      Padding="10" 
-                      HeightRequest="300">
-                    <Border.Shadow>
-                        <Shadow Brush="#daa520" Offset="4,4" Opacity="0.2" Radius="6" />
-                    </Border.Shadow>
-
-                    <CollectionView ItemsSource="{Binding Historial}" 
-                                  BackgroundColor="Transparent">
-                        <CollectionView.EmptyView>
-                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <Image Source="history_empty.png" HeightRequest="60" Opacity="0.5"/>
-                                <Label Text="No hay actividad reciente" 
-                                      TextColor="#999999" 
-                                      HorizontalOptions="Center" 
-                                      Margin="0,10,0,0"/>
-                            </VerticalStackLayout>
-                        </CollectionView.EmptyView>
-
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Border Style="{StaticResource HistoryItem}">
-                                    <Grid ColumnDefinitions="Auto, *">
-                                        <Ellipse Grid.Column="0" Fill="#daa520" WidthRequest="10" HeightRequest="10" VerticalOptions="Center"/>
-                                        <Label Grid.Column="1" Text="{Binding FormattedText}" Style="{StaticResource HistoryText}"/>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
                 </Border>
 
             </VerticalStackLayout>

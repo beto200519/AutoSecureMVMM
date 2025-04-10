@@ -8,9 +8,9 @@ namespace Interfases.Modelo
 {
     class CircuitoModelo
     {
-        public string Id { get; set; }
-        public string PermisoId { get; set; }
-        public bool Estado { get; set; }
-        public DateTime Fecha { get; set; }
+        public string id { get; set; }
+        public string permisoId { get; set; }
+        public bool estado { get; set; }
+        public DateTime fecha { get; set; }
     }
 }

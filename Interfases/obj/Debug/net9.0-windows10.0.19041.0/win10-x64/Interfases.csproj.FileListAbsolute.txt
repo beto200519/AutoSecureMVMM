@@ -488,3 +488,9 @@ C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\obj\Debug\net9.0
 C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\FluentUI.cs
 C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf
 C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf
+C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\DnsClient.dll
+C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\MongoDB.Bson.dll
+C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\MongoDB.Driver.dll
+C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SharpCompress.dll
+C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Snappier.dll
+C:\Users\TNC\Desktop\Nueva carpeta\ControlAccesoMaui\Interfases\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\ZstdSharp.dll
