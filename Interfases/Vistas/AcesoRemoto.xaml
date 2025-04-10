@@ -104,14 +104,17 @@
                                         <TapGestureRecognizer Command="{Binding SeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Source="encendido.png" 
+                                <!--<Image Source="encendido.png" 
                                        HeightRequest="40" 
                                        WidthRequest="40"
                                        IsVisible="{Binding PuertaAbierta}">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding DSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
-                                </Image>
+                                </Image>-->
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SeguroTappedCommand}" />
+                                </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
                     </Grid>
@@ -138,14 +141,14 @@
                                HeightRequest="70" 
                                WidthRequest="70">
                             <Grid>
-                                <Image Source="apagado.png" 
+                                <!--<Image Source="apagado.png" 
                                        HeightRequest="40" 
                                        WidthRequest="40"
                                        IsVisible="{Binding SeguroDesactivado}">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding DSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
-                                </Image>
+                                </Image>-->
                                 <Image Source="apagado.png" 
                                        HeightRequest="40" 
                                        WidthRequest="40"
@@ -154,6 +157,9 @@
                                         <TapGestureRecognizer Command="{Binding DSeguroTappedCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SeguroTappedCommand}" />
+                                </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
                     </Grid>
