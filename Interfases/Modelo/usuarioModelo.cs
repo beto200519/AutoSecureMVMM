@@ -8,12 +8,12 @@ namespace Interfases.Modelo
 {
     public class usuarioModelo
     {
-        public string Id { get; set; }              // Identificador único del usuario
-        public string Nombre { get; set; }          // Nombre completo
-        public string Correo { get; set; }          // Correo electrónico (usado para login)
-        public string Clave { get; set; }           // Contraseña (aunque en producción se recomienda almacenar un hash)
-        public int Pin { get; set; }                // Código PIN (si es parte de la seguridad)
-        public string Rol { get; set; }             // Rol del usuario (por ejemplo, administrador, usuario, etc.)
-        public DateTime? UltimoAcceso { get; set; }
+        public string Id { get; set; }
+        public string Nombre { get; set; }
+        public string Correo { get; set; }
+        public string Clave { get; set; }
+        public int Pin { get; set; }
+        public string Rol { get; set; }
+        public DateTime UltimoAcceso { get; set; }
     }
 }

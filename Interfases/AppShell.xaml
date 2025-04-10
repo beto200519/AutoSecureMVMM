@@ -21,6 +21,6 @@
         <ShellContent Title="Notificaciones" ContentTemplate="{DataTemplate Vistas:Notificaciones}" />
     </FlyoutItem>-->
     <FlyoutItem Title="Pedir permisos">
-        <ShellContent Title="Pedir permisos" ContentTemplate="{DataTemplate Vistas:Permisos}" />
+        <ShellContent Title="Pedir permisos" ContentTemplate="{DataTemplate Vistas:Acesos}" />
     </FlyoutItem>
 </Shell>

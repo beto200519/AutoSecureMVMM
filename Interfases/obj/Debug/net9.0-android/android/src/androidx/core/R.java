@@ -22,10 +22,10 @@ public final class R {
 		public static final int fontVariationSettings = 0x7f030218;
 		public static final int fontWeight = 0x7f030219;
 		public static final int lStar = 0x7f030277;
-		public static final int nestedScrollViewStyle = 0x7f030369;
-		public static final int queryPatterns = 0x7f0303ad;
-		public static final int shortcutMatchRequired = 0x7f0303e1;
-		public static final int ttcIndex = 0x7f0304e8;
+		public static final int nestedScrollViewStyle = 0x7f030368;
+		public static final int queryPatterns = 0x7f0303ac;
+		public static final int shortcutMatchRequired = 0x7f0303e0;
+		public static final int ttcIndex = 0x7f0304e7;
 	}
 	public static final class color {
 		public static final int androidx_core_ripple_material_light = 0x7f05001b;
@@ -181,16 +181,16 @@ public final class R {
 		public static final int status_bar_notification_info_overflow = 0x7f0f00ae;
 	}
 	public static final class style {
-		public static final int TextAppearance_Compat_Notification = 0x7f1001d0;
-		public static final int TextAppearance_Compat_Notification_Info = 0x7f1001d1;
-		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f1001d2;
-		public static final int TextAppearance_Compat_Notification_Time = 0x7f1001d3;
-		public static final int TextAppearance_Compat_Notification_Title = 0x7f1001d4;
-		public static final int Widget_Compat_NotificationActionContainer = 0x7f100339;
-		public static final int Widget_Compat_NotificationActionText = 0x7f10033a;
+		public static final int TextAppearance_Compat_Notification = 0x7f1001cf;
+		public static final int TextAppearance_Compat_Notification_Info = 0x7f1001d0;
+		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f1001d1;
+		public static final int TextAppearance_Compat_Notification_Time = 0x7f1001d2;
+		public static final int TextAppearance_Compat_Notification_Title = 0x7f1001d3;
+		public static final int Widget_Compat_NotificationActionContainer = 0x7f100338;
+		public static final int Widget_Compat_NotificationActionText = 0x7f100339;
 	}
 	public static final class styleable {
-		public static final int[] Capability = new int[] { 0x7f0303ad, 0x7f0303e1 };
+		public static final int[] Capability = new int[] { 0x7f0303ac, 0x7f0303e0 };
 		public static final int Capability_queryPatterns = 0;
 		public static final int Capability_shortcutMatchRequired = 1;
 		public static final int[] ColorStateListItem = new int[] { 0x010101a5, 0x0101031f, 0x01010647, 0x7f030031, 0x7f030277 };
@@ -208,7 +208,7 @@ public final class R {
 		public static final int FontFamily_fontProviderPackage = 5;
 		public static final int FontFamily_fontProviderQuery = 6;
 		public static final int FontFamily_fontProviderSystemFontFamily = 7;
-		public static final int[] FontFamilyFont = new int[] { 0x01010532, 0x01010533, 0x0101053f, 0x0101056f, 0x01010570, 0x7f03020d, 0x7f030217, 0x7f030218, 0x7f030219, 0x7f0304e8 };
+		public static final int[] FontFamilyFont = new int[] { 0x01010532, 0x01010533, 0x0101053f, 0x0101056f, 0x01010570, 0x7f03020d, 0x7f030217, 0x7f030218, 0x7f030219, 0x7f0304e7 };
 		public static final int FontFamilyFont_android_font = 0;
 		public static final int FontFamilyFont_android_fontStyle = 2;
 		public static final int FontFamilyFont_android_fontVariationSettings = 4;
